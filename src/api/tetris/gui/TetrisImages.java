@@ -8,13 +8,13 @@ import javafx.scene.layout.Pane;
 public class TetrisImages {
 
     public void ImageMainMenu(Pane root) {
-        Image image = new Image("/api.tetris.images/tetris2.jpg");
+        Image image = new Image("api/tetris/images/tetris2.jpg");
         ImageView vi = new ImageView();
         vi.setFitHeight(500);
         vi.setFitWidth(400);
         vi.setImage(image);
-        root.getChildren()
-            .add(vi);
+        root.getChildren().addAll(vi);
+        System.out.println("Powinno sie dodac");
     }
 
     public void ImageDataOfUser(Pane root) {

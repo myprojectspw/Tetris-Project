@@ -8,7 +8,7 @@ public class TetrisButtons {
 
     public Button ButtonHighScoreProperties(Pane root) {
         Button HighScoresButton = new Button("HighScores");
-        HighScoresButton.setPrefSize(200, 70);
+        HighScoresButton.setPrefSize(250, 70);
         HighScoresButton.setTranslateX(105);
         HighScoresButton.setTranslateY(270);
         root.getChildren()
@@ -18,7 +18,7 @@ public class TetrisButtons {
 
     public Button ButtonNewGameProperties(Pane root) {
         Button ButtonNewGame = new Button("New Game");
-        ButtonNewGame.setPrefSize(200, 70);
+        ButtonNewGame.setPrefSize(250, 70);
         ButtonNewGame.setTranslateX(105);
         ButtonNewGame.setTranslateY(190);
         root.getChildren()
@@ -28,7 +28,7 @@ public class TetrisButtons {
 
     public Button ButtonExitProperties(Pane root) {
         Button ExitButton = new Button("Exit");
-        ExitButton.setPrefSize(200, 70);
+        ExitButton.setPrefSize(250, 70);
         ExitButton.setTranslateX(105);
         ExitButton.setTranslateY(350);
         root.getChildren()

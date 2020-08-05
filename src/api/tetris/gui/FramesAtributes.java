@@ -118,7 +118,7 @@ public class FramesAtributes {
 
     public Button ButtonPlayProperties(Pane root) {
         Button ButtonPlay = new Button("Play");
-        ButtonPlay.setPrefSize(100.0D, 50.0D);
+        ButtonPlay.setPrefSize(150.0D, 50.0D);
         ButtonPlay.setTranslateX(40.0D);
         ButtonPlay.setTranslateY(220.0D);
         root.getChildren().addAll(new Node[]{ButtonPlay});
@@ -144,7 +144,7 @@ public class FramesAtributes {
     }
 
     public void ImageMainMenu(Pane root) {
-        Image image = new Image("file:tetris2.jpg");
+        Image image = new Image("api/tetris/images/tetris2.jpg");
         ImageView vi = new ImageView();
         vi.setFitHeight(500.0D);
         vi.setFitWidth(400.0D);
@@ -153,7 +153,7 @@ public class FramesAtributes {
     }
 
     public void ImageDataOfUser(Pane root) {
-        Image image = new Image("file:data.jpg");
+        Image image = new Image("api/tetris/images/data.jpg");
         ImageView vi = new ImageView();
         vi.setFitHeight(280.0D);
         vi.setFitWidth(290.0D);
@@ -162,7 +162,7 @@ public class FramesAtributes {
     }
 
     public void ImageScores(Pane root) {
-        Image image = new Image("file:scores.jpg");
+        Image image = new Image("api/tetris/images/scores.jpg");
         ImageView vi = new ImageView();
         vi.setFitHeight(290.0D);
         vi.setFitWidth(290.0D);

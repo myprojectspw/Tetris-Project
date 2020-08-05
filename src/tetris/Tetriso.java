@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
+import api.tetris.gui.TetrisImages;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -84,6 +85,8 @@ public class Tetriso extends Application {
         AttributesGUI = new FramesAtributes();
         AttributesFile = new InOutAttributes();
         AttributesData = new DataAllPlayers();
+
+
     }
     // --------------------------------------------------------------------------------
     // Frames
