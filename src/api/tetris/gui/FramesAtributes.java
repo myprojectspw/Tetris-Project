@@ -1,5 +1,6 @@
 package api.tetris.gui;
 
+import api.tetris.gui.mainFrame.MainFrameButtons;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,7 +15,11 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class FramesAtributes {
+
+    public MainFrameButtons mainFrameButtons;
+
     public FramesAtributes() {
+        mainFrameButtons = new MainFrameButtons();
     }
 
     public void LabelTetrisProperties(Pane root) {
@@ -80,32 +85,6 @@ public class FramesAtributes {
         root.getChildren().add(WrongNameOfPlaye);
     }
 
-    public Button ButtonHighScoreProperties(Pane root) {
-        Button HighScoresButton = new Button("HighScores");
-        HighScoresButton.setPrefSize(90.0D, 70.0D);
-        HighScoresButton.setTranslateX(155.0D);
-        HighScoresButton.setTranslateY(270.0D);
-        root.getChildren().addAll(new Node[]{HighScoresButton});
-        return HighScoresButton;
-    }
-
-    public Button ButtonNewGameProperties(Pane root) {
-        Button ButtonNewGame = new Button("New Game");
-        ButtonNewGame.setPrefSize(90.0D, 70.0D);
-        ButtonNewGame.setTranslateX(155.0D);
-        ButtonNewGame.setTranslateY(190.0D);
-        root.getChildren().addAll(new Node[]{ButtonNewGame});
-        return ButtonNewGame;
-    }
-
-    public Button ButtonExitProperties(Pane root) {
-        Button ExitButton = new Button("Exit");
-        ExitButton.setPrefSize(90.0D, 70.0D);
-        ExitButton.setTranslateX(155.0D);
-        ExitButton.setTranslateY(350.0D);
-        root.getChildren().addAll(new Node[]{ExitButton});
-        return ExitButton;
-    }
 
     public Button ButtonCancelProperties(Pane root) {
         Button ButtonCancel = new Button("Cancel");
@@ -118,7 +97,7 @@ public class FramesAtributes {
 
     public Button ButtonPlayProperties(Pane root) {
         Button ButtonPlay = new Button("Play");
-        ButtonPlay.setPrefSize(150.0D, 50.0D);
+        ButtonPlay.setPrefSize(100.0D, 50.0D);
         ButtonPlay.setTranslateX(40.0D);
         ButtonPlay.setTranslateY(220.0D);
         root.getChildren().addAll(new Node[]{ButtonPlay});
