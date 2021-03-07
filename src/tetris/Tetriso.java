@@ -108,6 +108,7 @@ public class Tetriso extends Application {
     public void FrameHighScores(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data,
             LinkedList<DataPlayer> allplayers, Scene MainScene, Canvas MainBoard, Canvas DataBoard) {
         Button HighScore = AttributesGUI.mainFrameButtons.ButtonHighScoreProperties(root);
+        HighScore.setStyle("-fx-background-color: #ff0000; ");
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
