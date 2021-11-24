@@ -22,68 +22,55 @@ public class FramesAtributes {
         mainFrameButtons = new MainFrameButtons();
     }
 
-    public void LabelTetrisProperties(Pane root) {
-        Label LabelTetris = new Label("TETRIS");
-        LabelTetris.setFont(new Font("Arial", 100.0D));
-        LabelTetris.setTranslateX(30.0D);
-        LabelTetris.setTranslateY(35.0D);
-        LabelTetris.setTextFill(Color.VIOLET);
-        root.getChildren().add(LabelTetris);
+    // Labels
+    // Utils
+    public void prepareLabel(Pane root, String name, String fontName, double fontSize, double positionX, double positionY ) {
+        Label customLabel = new Label(name );
+        customLabel.setFont(new Font(fontName, fontSize));
+        customLabel.setTranslateX(positionX);
+        customLabel.setTranslateY(positionY);
+        customLabel.setTextFill(Color.WHITE);
+        root.getChildren().add(customLabel);
     }
 
-    public void LabelGameOverProperties(Pane root) {
-        Label LabelGameOver = new Label("GAME OVER");
-        LabelGameOver.setFont(new Font("Arial", 40.0D));
-        LabelGameOver.setTranslateX(20.0D);
-        LabelGameOver.setTranslateY(50.0D);
-        LabelGameOver.setTextFill(Color.WHITE);
-        root.getChildren().add(LabelGameOver);
+    public void prepareLabelScore(Pane root, double score, String fontName, double fontSize, double positionX, double positionY ) {
+        Label customLabel = new Label(String.valueOf(score));
+        customLabel.setFont(new Font(fontName, fontSize));
+        customLabel.setTranslateX(positionX);
+        customLabel.setTranslateY(positionY);
+        customLabel.setTextFill(Color.WHITE);
+        root.getChildren().add(customLabel);
     }
 
-    public void LabelYourScoreProperties(Pane root) {
-        Label LabelYourScore = new Label("Your Score");
-        LabelYourScore.setFont(new Font("Arial", 40.0D));
-        LabelYourScore.setTranslateX(40.0D);
-        LabelYourScore.setTranslateY(100.0D);
-        LabelYourScore.setTextFill(Color.WHITE);
-        root.getChildren().add(LabelYourScore);
+    public void mainWindowLabel(Pane root) {
+        prepareLabel(root, "TETRIS", "Arial", 100.0D, 30.0D, 35.0D);
     }
 
-    public void LabelScoreProperties(Pane root, double score) {
-        Label LabelScore = new Label("" + score);
-        LabelScore.setFont(new Font("Arial", 40.0D));
-        LabelScore.setTranslateX(120.0D);
-        LabelScore.setTranslateY(150.0D);
-        LabelScore.setTextFill(Color.WHITE);
-        root.getChildren().add(LabelScore);
+    public void gameOverWindowLabel(Pane root) {
+        prepareLabel(root, "GAME OVER", "Arial", 40.0D, 20.0D, 50.0D);
     }
 
-    public void LabelDifficultyOfGameProperties(Pane root) {
-        Label DifficultyOfGame = new Label("Set difficulty level of game");
-        DifficultyOfGame.setFont(new Font("Arial", 20.0D));
-        DifficultyOfGame.setTranslateX(40.0D);
-        DifficultyOfGame.setTranslateY(110.0D);
-        DifficultyOfGame.setTextFill(Color.WHITE);
-        root.getChildren().add(DifficultyOfGame);
+    public void gameScoreWindowLabel(Pane root) {
+        prepareLabel(root, "Your Score", "Arial", 40.0D, 40.0D, 100.0D);
     }
 
-    public void LabelSetPlayerNameProperties(Pane root) {
-        Label SetPlayerName = new Label("Set your player name");
-        SetPlayerName.setFont(new Font("Arial", 20.0D));
-        SetPlayerName.setTranslateX(50.0D);
-        SetPlayerName.setTranslateY(25.0D);
-        SetPlayerName.setTextFill(Color.WHITE);
-        root.getChildren().add(SetPlayerName);
+    public void gameScoreWindowLabelScore(Pane root, double score) {
+        prepareLabelScore(root, score, "Arial", 40.0D, 120.0D, 150.0D);
+    }
+
+    public void gameChooseDifficultyWindowGame(Pane root) {
+        prepareLabel(root, "Set difficulty level of game", "Arial", 20.0D, 40.0D, 110.0D);
+    }
+
+    public void gameChooseDifficultyWindowPlayerNameLabel(Pane root) {
+        prepareLabel(root, "Set your player name", "Arial", 20.0D, 50.0D, 25.0D);
     }
 
     public void LabelWrongNameOfPlayer(Pane root) {
-        Label WrongNameOfPlaye = new Label("Wrong Name Of Player");
-        WrongNameOfPlaye.setFont(new Font("Arial", 20.0D));
-        WrongNameOfPlaye.setTranslateX(50.0D);
-        WrongNameOfPlaye.setTranslateY(5.0D);
-        WrongNameOfPlaye.setTextFill(Color.RED);
-        root.getChildren().add(WrongNameOfPlaye);
+        prepareLabel(root, "Wrong Name Of Player", "Arial", 20.0D, 50.0D, 5.0D);
     }
+
+    // BUTTONS
 
 
     public Button ButtonCancelProperties(Pane root) {

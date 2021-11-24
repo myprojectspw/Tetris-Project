@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import api.tetris.gui.TetrisImages;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -49,7 +48,7 @@ public class Tetriso extends Application {
     private Stage primaryStage;
     private Scene MainScene;
     private AnimationTimer timer;
-    private FramesAtributes AttributesGUI;
+    private FramesAtributes framesAtributes;
     private InOutAttributes AttributesFile;
     private DataAllPlayers AttributesData;
     private int WrongName;
@@ -84,7 +83,7 @@ public class Tetriso extends Application {
         DataBoard = new Canvas(290, 280);
         GameOverBoard = new Canvas(290, 280);
         gc = GameBoard.getGraphicsContext2D();
-        AttributesGUI = new FramesAtributes();
+        framesAtributes = new FramesAtributes();
         AttributesFile = new InOutAttributes();
         AttributesData = new DataAllPlayers();
 
@@ -96,27 +95,31 @@ public class Tetriso extends Application {
 
     public void FrameMainMenu(Pane root, Canvas MainBoard, Scene scene, Stage stage, TableView<Player> table, ObservableList<Player> data,
             LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
-        AttributesGUI.ClearScreenForNewWindow(stage, root);
-        AttributesGUI.ImageMainMenu(root);
-        AttributesGUI.LabelTetrisProperties(root);
+        // New window prepare
+        framesAtributes.ClearScreenForNewWindow(stage, root);
+        framesAtributes.ImageMainMenu(root);
+        framesAtributes.mainWindowLabel(root);
         root.getChildren()
             .addAll(MainBoard);
+        // Menu
         ButtonAcctionNewGame(root, stage, table, data, scene, MainBoard, allplayers, DataBoard);
         FrameHighScores(root, stage, table, data, allplayers, scene, MainBoard, DataBoard);
         ButtonAcctionEnd(root);
-        AttributesGUI.ShowScene(stage, scene);
+
+        framesAtributes.ShowScene(stage, scene);
     }
+
 
     public void FrameHighScores(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data,
             LinkedList<DataPlayer> allplayers, Scene MainScene, Canvas MainBoard, Canvas DataBoard) {
-        Button HighScore = AttributesGUI.mainFrameButtons.ButtonHighScoreProperties(root);
+        Button HighScore = framesAtributes.mainFrameButtons.ButtonHighScoreProperties(root);
         HighScore.setStyle("-fx-background-color: #ff0000; ");
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
             @SuppressWarnings("unchecked")
             public void handle(MouseEvent e) {
-                AttributesGUI.ClearScreenForNewWindow(stage, root);
+                framesAtributes.ClearScreenForNewWindow(stage, root);
                 Scene scene = new Scene(new Group());
                 stage.setTitle("Tetris");
 
@@ -137,7 +140,7 @@ public class Tetriso extends Application {
                 table.getColumns()
                      .addAll(RankOfPlayers, NameOfPlayers, ScoreOfPlayers);
 
-                Button OKToMenu = AttributesGUI.ButtonOKToMainMenuFromHighScore(root);
+                Button OKToMenu = framesAtributes.ButtonOKToMainMenuFromHighScore(root);
 
                 EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
@@ -160,7 +163,7 @@ public class Tetriso extends Application {
                 ((Group) scene.getRoot()).getChildren()
                                          .addAll(vbox, OKToMenu);
 
-                AttributesGUI.ShowScene(stage, scene);
+                framesAtributes.ShowScene(stage, scene);
             }
         };
         HighScore.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
@@ -168,16 +171,16 @@ public class Tetriso extends Application {
 
     public void FrameDataOfPlayer(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene MainScene,
             Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
-        AttributesGUI.ClearScreenForNewWindow(stage, root);
+        framesAtributes.ClearScreenForNewWindow(stage, root);
         root.getChildren()
             .addAll(DataBoard);
-        AttributesGUI.ImageDataOfUser(root);
-        AttributesGUI.LabelSetPlayerNameProperties(root);
+        framesAtributes.ImageDataOfUser(root);
+        framesAtributes.gameChooseDifficultyWindowPlayerNameLabel(root);
         if (WrongName == 1) {
-            AttributesGUI.LabelWrongNameOfPlayer(root);
+            framesAtributes.LabelWrongNameOfPlayer(root);
         }
-        AttributesGUI.LabelDifficultyOfGameProperties(root);
-        TextField NamePlayer = AttributesGUI.TextFieldForNameOfPlayerProperties();
+        framesAtributes.gameChooseDifficultyWindowGame(root);
+        TextField NamePlayer = framesAtributes.TextFieldForNameOfPlayerProperties();
 
         NameOfPlayer = "";
         NamePlayer.textProperty()
@@ -188,13 +191,13 @@ public class Tetriso extends Application {
         DifficultyLevel = 1;
         ToggleGroup group = new ToggleGroup();
 
-        RadioButton Easy = AttributesGUI.RadioButtonEasyProperties();
+        RadioButton Easy = framesAtributes.RadioButtonEasyProperties();
         Easy.setToggleGroup(group);
 
-        RadioButton Medium = AttributesGUI.RadioButtonMediumProperties();
+        RadioButton Medium = framesAtributes.RadioButtonMediumProperties();
         Medium.setToggleGroup(group);
 
-        RadioButton Hard = AttributesGUI.RadioButtonHardProperties();
+        RadioButton Hard = framesAtributes.RadioButtonHardProperties();
         Hard.setToggleGroup(group);
 
         group.selectedToggleProperty()
@@ -213,20 +216,20 @@ public class Tetriso extends Application {
         ButtonCancelToBack(root, stage, table, data, MainScene, MainBoard, allplayers, DataBoard);
         root.getChildren()
             .addAll(NamePlayer, Easy, Medium, Hard);
-        AttributesGUI.ShowScene(stage, MainScene);
+        framesAtributes.ShowScene(stage, MainScene);
     }
 
     public void FrameEndScreen(Pane root, Stage stage, Canvas GameOverBoard, Scene MainScene, TableView<Player> table, long score,
             LinkedList<DataPlayer> allplayers, Canvas MainBoard, ObservableList<Player> data, Canvas DataBoard) {
-        AttributesGUI.ClearScreenForNewWindow(stage, root);
+        framesAtributes.ClearScreenForNewWindow(stage, root);
         root.getChildren()
             .addAll(GameOverBoard);
-        AttributesGUI.ImageScores(root);
-        AttributesGUI.LabelGameOverProperties(root);
-        AttributesGUI.LabelYourScoreProperties(root);
-        AttributesGUI.LabelScoreProperties(root, score);
+        framesAtributes.ImageScores(root);
+        framesAtributes.gameOverWindowLabel(root);
+        framesAtributes.gameScoreWindowLabel(root);
+        framesAtributes.gameScoreWindowLabelScore(root, score);
         ButtonOKReturn(root, stage, table, allplayers, MainScene, MainBoard, data, DataBoard);
-        AttributesGUI.ShowScene(stage, MainScene);
+        framesAtributes.ShowScene(stage, MainScene);
     }
     // --------------------------------------------------------------------------------
     // ButtonActions
@@ -236,12 +239,12 @@ public class Tetriso extends Application {
             Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
         //
         SetNewValues();
-        Button Newgame = AttributesGUI.mainFrameButtons.ButtonNewGameProperties(root);
+        Button Newgame = framesAtributes.mainFrameButtons.ButtonNewGameProperties(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent e) {
-                AttributesGUI.ClearScreenForNewWindow(stage, root);
+                framesAtributes.ClearScreenForNewWindow(stage, root);
                 FrameDataOfPlayer(root, stage, table, data, scene, MainBoard, allplayers, DataBoard);
             }
         };
@@ -249,7 +252,7 @@ public class Tetriso extends Application {
     }
 
     public void ButtonAcctionEnd(Pane root) {
-        Button Exit = AttributesGUI.mainFrameButtons.ButtonExitProperties(root);
+        Button Exit = framesAtributes.mainFrameButtons.ButtonExitProperties(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
@@ -266,14 +269,14 @@ public class Tetriso extends Application {
         SetNewValues();
         repaint();
         init();
-        Button Play = AttributesGUI.ButtonPlayProperties(root);
+        Button Play = framesAtributes.ButtonPlayProperties(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent e) {
                 if (NameOfPlayer.isEmpty() || NameOfPlayer.matches("^.*[^a-zA-Z].*$")) {
                     WrongName = 1;
-                    AttributesGUI.ClearScreenForNewWindow(stage, root);
+                    framesAtributes.ClearScreenForNewWindow(stage, root);
                     FrameDataOfPlayer(root, stage, table, data, scene, MainBoard, allplayers, DataBoard);
                 } else {
                     WrongName = 0;
@@ -283,7 +286,7 @@ public class Tetriso extends Application {
                     // Tetriso.TetrisGame(scene);
                     Scene scene = new Scene(Create());
                     TetrisGame(scene);
-                    AttributesGUI.ShowScene(stage, scene);
+                    framesAtributes.ShowScene(stage, scene);
                 }
             }
         };
@@ -292,7 +295,7 @@ public class Tetriso extends Application {
 
     public void ButtonCancelToBack(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene MainScene,
             Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
-        Button Cancel = AttributesGUI.ButtonCancelProperties(root);
+        Button Cancel = framesAtributes.ButtonCancelProperties(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
@@ -306,7 +309,7 @@ public class Tetriso extends Application {
 
     public void ButtonOKReturn(Pane root, Stage stage, TableView<Player> table, LinkedList<DataPlayer> allplayers, Scene MainScene,
             Canvas MainBoard, ObservableList<Player> data, Canvas DataBoard) {
-        Button OK = AttributesGUI.ButtonOKToMainMenuFromEndScreen(root);
+        Button OK = framesAtributes.ButtonOKToMainMenuFromEndScreen(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
