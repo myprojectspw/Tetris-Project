@@ -97,8 +97,8 @@ public class Tetriso extends Application {
             LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
         // New window prepare
         TetrisUtils.ClearScreenForNewWindow(stage, root);
-        framesAtributes.ImageMainMenu(root);
-        framesAtributes.mainWindowLabel(root);
+        framesAtributes.mainWindowImage(root);
+        framesAtributes.mainWindowLabelMain(root);
         root.getChildren()
             .addAll(MainBoard);
         // Menu
@@ -112,7 +112,7 @@ public class Tetriso extends Application {
 
     public void FrameHighScores(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data,
             LinkedList<DataPlayer> allplayers, Scene MainScene, Canvas MainBoard, Canvas DataBoard) {
-        Button HighScore = framesAtributes.ButtonHighScoreProperties(root);
+        Button HighScore = framesAtributes.mainWindowButtonHighScores(root);
         HighScore.setStyle("-fx-background-color: #ff0000; ");
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
@@ -140,7 +140,7 @@ public class Tetriso extends Application {
                 table.getColumns()
                      .addAll(RankOfPlayers, NameOfPlayers, ScoreOfPlayers);
 
-                Button OKToMenu = framesAtributes.ButtonOKToMainMenuFromHighScore(root);
+                Button OKToMenu = framesAtributes.highScoresWindowButtonOK(root);
 
                 EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
@@ -174,13 +174,13 @@ public class Tetriso extends Application {
         TetrisUtils.ClearScreenForNewWindow(stage, root);
         root.getChildren()
             .addAll(DataBoard);
-        framesAtributes.ImageDataOfUser(root);
-        framesAtributes.gameChooseDifficultyWindowPlayerNameLabel(root);
+        framesAtributes.gamePropertiesWindowImage(root);
+        framesAtributes.gamePropertiesWindowPlayerNameLabel(root);
         if (WrongName == 1) {
-            framesAtributes.gameChooseDifficultyWindowWrongPlayerName(root);
+            framesAtributes.gamePropertiesWindowWrongPlayerName(root);
         }
-        framesAtributes.gameChooseDifficultyWindowChoseLevel(root);
-        TextField NamePlayer = framesAtributes.TextFieldForNameOfPlayerProperties();
+        framesAtributes.gamePropertiesWindowChoseLevel(root);
+        TextField NamePlayer = framesAtributes.gamePropertiesWindowTextField();
 
         NameOfPlayer = "";
         NamePlayer.textProperty()
@@ -191,13 +191,13 @@ public class Tetriso extends Application {
         DifficultyLevel = 1;
         ToggleGroup group = new ToggleGroup();
 
-        RadioButton Easy = framesAtributes.RadioButtonEasyProperties();
+        RadioButton Easy = framesAtributes.gamePropertiesWindowEasy();
         Easy.setToggleGroup(group);
 
-        RadioButton Medium = framesAtributes.RadioButtonMediumProperties();
+        RadioButton Medium = framesAtributes.gamePropertiesWindowMedium();
         Medium.setToggleGroup(group);
 
-        RadioButton Hard = framesAtributes.RadioButtonHardProperties();
+        RadioButton Hard = framesAtributes.gamePropertiesWindowHard();
         Hard.setToggleGroup(group);
 
         group.selectedToggleProperty()
@@ -224,10 +224,10 @@ public class Tetriso extends Application {
         TetrisUtils.ClearScreenForNewWindow(stage, root);
         root.getChildren()
             .addAll(GameOverBoard);
-        framesAtributes.ImageScores(root);
-        framesAtributes.gameOverWindowLabel(root);
-        framesAtributes.gameScoreWindowLabel(root);
-        framesAtributes.gameScoreWindowLabelScore(root, score);
+        framesAtributes.gameOverWindowImage(root);
+        framesAtributes.gameOverWindowLabelMain(root);
+        framesAtributes.gameOverWindowLabelScore(root);
+        framesAtributes.gameOverWindowLabelScoreValue(root, score);
         ButtonOKReturn(root, stage, table, allplayers, MainScene, MainBoard, data, DataBoard);
         TetrisUtils.ShowScene(stage, MainScene);
     }
@@ -239,7 +239,7 @@ public class Tetriso extends Application {
             Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
         //
         SetNewValues();
-        Button Newgame = framesAtributes.ButtonNewGameProperties(root);
+        Button Newgame = framesAtributes.mainWindowButtonNewGame(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
@@ -252,7 +252,7 @@ public class Tetriso extends Application {
     }
 
     public void ButtonAcctionEnd(Pane root) {
-        Button Exit = framesAtributes.ButtonExitProperties(root);
+        Button Exit = framesAtributes.mainWindowButtonExit(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
@@ -269,7 +269,7 @@ public class Tetriso extends Application {
         SetNewValues();
         repaint();
         init();
-        Button Play = framesAtributes.gameChooseDifficultyWindowPlayButton(root);
+        Button Play = framesAtributes.gamePropertiesWindowButtonPlay(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
@@ -295,7 +295,7 @@ public class Tetriso extends Application {
 
     public void ButtonCancelToBack(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene MainScene,
             Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
-        Button Cancel = framesAtributes.gameChooseDifficultyWindowCancelButton(root);
+        Button Cancel = framesAtributes.gamePropertiesWindowButtonCancel(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
@@ -309,7 +309,7 @@ public class Tetriso extends Application {
 
     public void ButtonOKReturn(Pane root, Stage stage, TableView<Player> table, LinkedList<DataPlayer> allplayers, Scene MainScene,
             Canvas MainBoard, ObservableList<Player> data, Canvas DataBoard) {
-        Button OK = framesAtributes.ButtonOKToMainMenuFromEndScreen(root);
+        Button OK = framesAtributes.gameOverWindowButtonOK(root);
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
