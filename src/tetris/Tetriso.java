@@ -69,6 +69,8 @@ public class Tetriso extends Application {
 
         FrameMainMenu(root, MainBoard, MainScene, primaryStage, table, data, allplayers, DataBoard);
         // primaryStage.setResizable(false);
+
+
     }
 
     public static void main(String[] args) {
