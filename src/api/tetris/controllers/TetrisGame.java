@@ -192,8 +192,7 @@ public class TetrisGame {
             timer.stop();
             tetrisSettings.getAttributesData().SetNewPlayer(tetrisSettings.getAllplayers(), tetrisSettings.getNameOfPlayer(), score);
             tetrisSettings.setScore(score);
-//            FrameEndScreen(root, primaryStage, GameOverBoard, MainScene, table, score, allplayers, MainBoard, data, DataBoard);
-            Tetriso.FrameEndScreen(tetrisSettings);
+            GameOverWindowButtons.FrameEndScreen(tetrisSettings);
         }
     }
 
