@@ -189,18 +189,19 @@ public class Tetriso extends Application {
         HighScore.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
-    public void FrameDataOfPlayer(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene MainScene,
-            Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
-        TetrisUtils.ClearScreenForNewWindow(stage, root);
-        root.getChildren()
-            .addAll(DataBoard);
-        framesAtributes.gamePropertiesWindowImage(root);
-        framesAtributes.gamePropertiesWindowPlayerNameLabel(root);
+    public void FrameDataOfPlayer(TetrisSettings tetrisSettings) {
+//            (Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene MainScene,
+//            Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
+        TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
+        tetrisSettings.getRoot().getChildren()
+            .addAll(tetrisSettings.getDataBoard());
+        tetrisSettings.getFramesAtributes().gamePropertiesWindowImage(tetrisSettings.getRoot());
+        tetrisSettings.getFramesAtributes().gamePropertiesWindowPlayerNameLabel(tetrisSettings.getRoot());
         if (WrongName == 1) {
-            framesAtributes.gamePropertiesWindowWrongPlayerName(root);
+            tetrisSettings.getFramesAtributes().gamePropertiesWindowWrongPlayerName(tetrisSettings.getRoot());
         }
-        framesAtributes.gamePropertiesWindowChoseLevel(root);
-        TextField NamePlayer = framesAtributes.gamePropertiesWindowTextField();
+        tetrisSettings.getFramesAtributes().gamePropertiesWindowChoseLevel(tetrisSettings.getRoot());
+        TextField NamePlayer = tetrisSettings.getFramesAtributes().gamePropertiesWindowTextField();
 
         NameOfPlayer = "";
         NamePlayer.textProperty()
@@ -211,13 +212,13 @@ public class Tetriso extends Application {
         DifficultyLevel = 1;
         ToggleGroup group = new ToggleGroup();
 
-        RadioButton Easy = framesAtributes.gamePropertiesWindowEasy();
+        RadioButton Easy = tetrisSettings.getFramesAtributes().gamePropertiesWindowEasy();
         Easy.setToggleGroup(group);
 
-        RadioButton Medium = framesAtributes.gamePropertiesWindowMedium();
+        RadioButton Medium = tetrisSettings.getFramesAtributes().gamePropertiesWindowMedium();
         Medium.setToggleGroup(group);
 
-        RadioButton Hard = framesAtributes.gamePropertiesWindowHard();
+        RadioButton Hard = tetrisSettings.getFramesAtributes().gamePropertiesWindowHard();
         Hard.setToggleGroup(group);
 
         group.selectedToggleProperty()
@@ -232,11 +233,16 @@ public class Tetriso extends Application {
                      }
                  }
              });
-        ButtonAcctionOKToGame(root, stage, table, data, MainScene, MainBoard, DataBoard, allplayers);
-        ButtonCancelToBack(root, stage, table, data, MainScene, MainBoard, allplayers, DataBoard);
-        root.getChildren()
+        ButtonAcctionOKToGame(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage(), tetrisSettings.getTable(),
+                tetrisSettings.getData(), tetrisSettings.getScene(), tetrisSettings.getMainBoard(),
+                tetrisSettings.getDataBoard(), tetrisSettings.getAllplayers());
+
+        ButtonCancelToBack(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage(), tetrisSettings.getTable(),
+                tetrisSettings.getData(), tetrisSettings.getScene(), tetrisSettings.getMainBoard(), tetrisSettings.getAllplayers(),
+                tetrisSettings.getDataBoard());
+        tetrisSettings.getRoot().getChildren()
             .addAll(NamePlayer, Easy, Medium, Hard);
-        TetrisUtils.ShowScene(stage, MainScene);
+        TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), tetrisSettings.getScene());
     }
 
     public void FrameEndScreen(Pane root, Stage stage, Canvas GameOverBoard, Scene MainScene, TableView<Player> table, long score,
@@ -256,9 +262,6 @@ public class Tetriso extends Application {
     // --------------------------------------------------------------------------------
 
     public void ButtonAcctionNewGame(TetrisSettings tetrisSettings) {
-//            Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene scene,
-//            Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
-        //
         SetNewValues();
         Button newgame = tetrisSettings.getFramesAtributes().mainWindowButtonNewGame(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
@@ -266,7 +269,7 @@ public class Tetriso extends Application {
             @Override
             public void handle(MouseEvent e) {
                 TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
-                FrameDataOfPlayer(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage(), tetrisSettings.getTable(), tetrisSettings.getData(), tetrisSettings.getScene(), tetrisSettings.getMainBoard(), tetrisSettings.getAllplayers(), tetrisSettings.getDataBoard());
+                FrameDataOfPlayer(tetrisSettings);
             }
         };
         newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
@@ -298,7 +301,11 @@ public class Tetriso extends Application {
                 if (NameOfPlayer.isEmpty() || NameOfPlayer.matches("^.*[^a-zA-Z].*$")) {
                     WrongName = 1;
                     TetrisUtils.ClearScreenForNewWindow(stage, root);
-                    FrameDataOfPlayer(root, stage, table, data, scene, MainBoard, allplayers, DataBoard);
+
+                    FrameDataOfPlayer(tetrisSettings);
+
+
+//                    FrameDataOfPlayer(root, stage, table, data, scene, MainBoard, allplayers, DataBoard);
                 } else {
                     WrongName = 0;
                     root.getChildren()
