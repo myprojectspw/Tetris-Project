@@ -1,5 +1,6 @@
 package api.tetris.controllers;
 import api.tetris.TetrisSettings;
+import api.tetris.windows.GameOverWindow;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,19 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
-
 public class TetrisGame {
-    //    private Pane root;
-//    private Stage primaryStage;
-//    private Canvas GameOverBoard;
-//    private Scene MainScene;
-//    private TableView<Player> table;
-//    private LinkedList<DataPlayer> allplayers;
-//    private Canvas MainBoard;
-//    private ObservableList<Player> data;
-//    private Canvas DataBoard;
-
 
     private TetrisSettings tetrisSettings;
     private AnimationTimer timer;
@@ -33,6 +22,7 @@ public class TetrisGame {
     public TetrisGame() {}
     public TetrisGame(TetrisSettings tetrisSettings) {
         this.tetrisSettings = tetrisSettings;
+        SetNewValues();
     }
 
     // ---------------------------------------------------------------------------------------
@@ -88,7 +78,7 @@ public class TetrisGame {
                     {new Point(1, 0), new Point(0, 1), new Point(1, 1), new Point(0, 2)}}};
     private javafx.scene.paint.Color[] tetraminoColors = {javafx.scene.paint.Color.CYAN, javafx.scene.paint.Color.BLUE, javafx.scene.paint.Color.ORANGE, javafx.scene.paint.Color.YELLOW, javafx.scene.paint.Color.GREEN, javafx.scene.paint.Color.PINK, javafx.scene.paint.Color.RED};
 
-    public void TetrisGame(Scene scene) {
+    public void start(Scene scene) {
         scene.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case SPACE:
@@ -192,7 +182,7 @@ public class TetrisGame {
             timer.stop();
             tetrisSettings.getAttributesData().SetNewPlayer(tetrisSettings.getAllplayers(), tetrisSettings.getNameOfPlayer(), score);
             tetrisSettings.setScore(score);
-            GameOverWindowButtons.FrameEndScreen(tetrisSettings);
+            GameOverWindow.FrameEndScreen(tetrisSettings);
         }
     }
 

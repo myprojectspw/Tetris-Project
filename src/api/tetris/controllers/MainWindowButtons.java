@@ -2,6 +2,7 @@
 package api.tetris.controllers;
 
 import api.tetris.TetrisSettings;
+import api.tetris.windows.GamePropertiesWindow;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -43,7 +44,7 @@ public class MainWindowButtons {
             @Override
             public void handle(MouseEvent e) {
                 TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
-                GamePropertiesWindowButtons.FrameDataOfPlayer(tetrisSettings);
+                GamePropertiesWindow.FrameDataOfPlayer(tetrisSettings);
             }
         };
         newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
