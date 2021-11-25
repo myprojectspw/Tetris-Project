@@ -39,31 +39,14 @@ import api.tetris.gui.FramesAttributes;
 public class Tetriso extends Application {
 
     public TetrisSettings tetrisSettings;
-//    =====================
 
     public static LinkedList<DataPlayer> allplayers = new LinkedList<>();
-    private TableView<Player> table = new TableView<>();
-    private ObservableList<Player> data = FXCollections.observableArrayList();
-    private Canvas GameBoard;
-    private Canvas MainBoard;
-    private Canvas DataBoard;
-    private Canvas GameOverBoard;
-    private GraphicsContext gc;
-    private Pane root;
-    private Stage primaryStage;
-    private Scene MainScene;
-
-    private FramesAttributes framesAtributes;
-    private InOutAttributes AttributesFile;
-    private DataAllPlayers AttributesData;
-    private int WrongName;
 
     @Override
     public void start(Stage stage) {
         SetMainPropertiesForGame(stage);
 
         FrameMainMenu(tetrisSettings);
-        // primaryStage.setResizable(false);
 
     }
 
@@ -90,26 +73,10 @@ public class Tetriso extends Application {
         try {
             allplayers = (LinkedList<DataPlayer>) tetrisSettings.getAttributesFile().LoadProgress(allplayers);
         } catch (ClassNotFoundException e) {
-            // e.printStackTrace();
             System.out.println("Cannot found database of players, please reload application");
         }
 
         tetrisSettings.setAllplayers(allplayers);
-
-        root = new Pane();
-        GameBoard = new Canvas(600, 600);
-        MainBoard = new Canvas(400, 460);
-        DataBoard = new Canvas(290, 280);
-        GameOverBoard = new Canvas(290, 280);
-        gc = GameBoard.getGraphicsContext2D();
-        framesAtributes = new FramesAttributes();
-        AttributesFile = new InOutAttributes();
-        AttributesData = new DataAllPlayers();
-
-        primaryStage = stage;
-        MainScene = new Scene(root);
-
-
     }
     // --------------------------------------------------------------------------------
     // Frames
@@ -241,8 +208,6 @@ public class Tetriso extends Application {
     }
 
     public static void FrameEndScreen(TetrisSettings tetrisSettings) {
-//            Pane root, Stage stage, Canvas GameOverBoard, Scene MainScene, TableView<Player> table, long score,
-//            LinkedList<DataPlayer> allplayers, Canvas MainBoard, ObservableList<Player> data, Canvas DataBoard) {
         TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
         tetrisSettings.getRoot().getChildren()
             .addAll(tetrisSettings.getGameOverBoard());
@@ -250,7 +215,6 @@ public class Tetriso extends Application {
         tetrisSettings.getFramesAtributes().gameOverWindowLabelMain(tetrisSettings.getRoot());
         tetrisSettings.getFramesAtributes().gameOverWindowLabelScore(tetrisSettings.getRoot());
         tetrisSettings.getFramesAtributes().gameOverWindowLabelScoreValue(tetrisSettings.getRoot(), tetrisSettings.getScore());
-//        ButtonOKReturn(root, stage, table, allplayers, MainScene, MainBoard, data, DataBoard);
         ButtonOKReturn(tetrisSettings);
         TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), tetrisSettings.getScene());
     }
@@ -328,8 +292,6 @@ public class Tetriso extends Application {
     }
 
     public static void ButtonOKReturn(TetrisSettings tetrisSettings) {
-//            (Pane root, Stage stage, TableView<Player> table, LinkedList<DataPlayer> allplayers, Scene MainScene,
-//            Canvas MainBoard, ObservableList<Player> data, Canvas DataBoard) {
         Button OK = tetrisSettings.getFramesAtributes().gameOverWindowButtonOK(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
@@ -337,22 +299,7 @@ public class Tetriso extends Application {
             public void handle(MouseEvent e) {
                 tetrisSettings.getAttributesFile().SaveProgress(tetrisSettings.getAllplayers());
 
-//                TetrisSettings tetrisSettings = new TetrisSettings();
-//                tetrisSettings.setRoot(root);
-//                tetrisSettings.setMainBoard(MainBoard);
-//                tetrisSettings.setScene(MainScene);
-//                tetrisSettings.setPrimaryStage(stage);
-//                tetrisSettings.setTable(table);
-//                tetrisSettings.setData(data);
-//                tetrisSettings.setAllplayers(allplayers);
-//                tetrisSettings.setDataBoard(DataBoard);
-//                tetrisSettings.setFramesAtributes(framesAtributes);
-//                tetrisSettings.setAttributesData(AttributesData);
-//                tetrisSettings.setAttributesFile(AttributesFile);
-
                 FrameMainMenu(tetrisSettings);
-
-//                FrameMainMenu(root, MainBoard, MainScene, stage, table, data, allplayers, DataBoard);
             }
         };
         OK.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
