@@ -35,6 +35,7 @@ public class TetrisSettings {
     private int wrongName;
     private String nameOfPlayer = new String();
     private int difficultyLevel;
+    private long score;
 
 
     public TetrisSettings() {}
@@ -184,5 +185,13 @@ public class TetrisSettings {
 
     public void setDifficultyLevel(int difficultyLevel) {
         this.difficultyLevel = difficultyLevel;
+    }
+
+    public long getScore() {
+        return score;
+    }
+
+    public void setScore(long score) {
+        this.score = score;
     }
 }

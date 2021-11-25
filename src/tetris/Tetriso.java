@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 import api.tetris.TetrisSettings;
+import api.tetris.controllers.TetrisGame;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
@@ -51,7 +52,7 @@ public class Tetriso extends Application {
     private Pane root;
     private Stage primaryStage;
     private Scene MainScene;
-    private AnimationTimer timer;
+
     private FramesAttributes framesAtributes;
     private InOutAttributes AttributesFile;
     private DataAllPlayers AttributesData;
@@ -114,7 +115,7 @@ public class Tetriso extends Application {
     // Frames
     // --------------------------------------------------------------------------------
 
-    public void FrameMainMenu(TetrisSettings tetrisSettings) {
+    public static void FrameMainMenu(TetrisSettings tetrisSettings) {
 
         // New window prepare
         TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
@@ -126,13 +127,13 @@ public class Tetriso extends Application {
         // Menu
         ButtonAcctionNewGame(tetrisSettings);
         FrameHighScores(tetrisSettings);
-        ButtonAcctionEnd(tetrisSettings.getRoot());
+        ButtonAcctionEnd(tetrisSettings);
 
         TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), tetrisSettings.getScene());
     }
 
 
-    public void FrameHighScores(TetrisSettings tetrisSettings) {
+    public static void FrameHighScores(TetrisSettings tetrisSettings) {
         Button HighScore = tetrisSettings.getFramesAtributes().mainWindowButtonHighScores(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
@@ -189,25 +190,25 @@ public class Tetriso extends Application {
         HighScore.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
-    public void FrameDataOfPlayer(TetrisSettings tetrisSettings) {
+    public static void FrameDataOfPlayer(TetrisSettings tetrisSettings) {
         TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
         tetrisSettings.getRoot().getChildren()
             .addAll(tetrisSettings.getDataBoard());
         tetrisSettings.getFramesAtributes().gamePropertiesWindowImage(tetrisSettings.getRoot());
         tetrisSettings.getFramesAtributes().gamePropertiesWindowPlayerNameLabel(tetrisSettings.getRoot());
-        if (WrongName == 1) {
+        if (tetrisSettings.getWrongName() == 1) {
             tetrisSettings.getFramesAtributes().gamePropertiesWindowWrongPlayerName(tetrisSettings.getRoot());
         }
         tetrisSettings.getFramesAtributes().gamePropertiesWindowChoseLevel(tetrisSettings.getRoot());
         TextField NamePlayer = tetrisSettings.getFramesAtributes().gamePropertiesWindowTextField();
 
-        NameOfPlayer = "";
+        tetrisSettings.setNameOfPlayer("");
         NamePlayer.textProperty()
                   .addListener((observable, oldValue, newValue) -> {
-                      NameOfPlayer = newValue;
+                      tetrisSettings.setNameOfPlayer(newValue);
                   });
 
-        DifficultyLevel = 1;
+        tetrisSettings.setDifficultyLevel(1);
         ToggleGroup group = new ToggleGroup();
 
         RadioButton Easy = tetrisSettings.getFramesAtributes().gamePropertiesWindowEasy();
@@ -225,9 +226,9 @@ public class Tetriso extends Application {
                  @Override
                  public void changed(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) {
                      if (group.getSelectedToggle() != null) {
-                         DifficultyLevel = Integer.parseInt(group.getSelectedToggle()
+                         tetrisSettings.setDifficultyLevel(Integer.parseInt(group.getSelectedToggle()
                                                                  .getUserData()
-                                                                 .toString());
+                                                                 .toString()));
                      }
                  }
              });
@@ -239,24 +240,26 @@ public class Tetriso extends Application {
         TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), tetrisSettings.getScene());
     }
 
-    public void FrameEndScreen(Pane root, Stage stage, Canvas GameOverBoard, Scene MainScene, TableView<Player> table, long score,
-            LinkedList<DataPlayer> allplayers, Canvas MainBoard, ObservableList<Player> data, Canvas DataBoard) {
-        TetrisUtils.ClearScreenForNewWindow(stage, root);
-        root.getChildren()
-            .addAll(GameOverBoard);
-        framesAtributes.gameOverWindowImage(root);
-        framesAtributes.gameOverWindowLabelMain(root);
-        framesAtributes.gameOverWindowLabelScore(root);
-        framesAtributes.gameOverWindowLabelScoreValue(root, score);
-        ButtonOKReturn(root, stage, table, allplayers, MainScene, MainBoard, data, DataBoard);
-        TetrisUtils.ShowScene(stage, MainScene);
+    public static void FrameEndScreen(TetrisSettings tetrisSettings) {
+//            Pane root, Stage stage, Canvas GameOverBoard, Scene MainScene, TableView<Player> table, long score,
+//            LinkedList<DataPlayer> allplayers, Canvas MainBoard, ObservableList<Player> data, Canvas DataBoard) {
+        TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
+        tetrisSettings.getRoot().getChildren()
+            .addAll(tetrisSettings.getGameOverBoard());
+        tetrisSettings.getFramesAtributes().gameOverWindowImage(tetrisSettings.getRoot());
+        tetrisSettings.getFramesAtributes().gameOverWindowLabelMain(tetrisSettings.getRoot());
+        tetrisSettings.getFramesAtributes().gameOverWindowLabelScore(tetrisSettings.getRoot());
+        tetrisSettings.getFramesAtributes().gameOverWindowLabelScoreValue(tetrisSettings.getRoot(), tetrisSettings.getScore());
+//        ButtonOKReturn(root, stage, table, allplayers, MainScene, MainBoard, data, DataBoard);
+        ButtonOKReturn(tetrisSettings);
+        TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), tetrisSettings.getScene());
     }
     // --------------------------------------------------------------------------------
     // ButtonActions
     // --------------------------------------------------------------------------------
 
-    public void ButtonAcctionNewGame(TetrisSettings tetrisSettings) {
-        SetNewValues();
+    public static void ButtonAcctionNewGame(TetrisSettings tetrisSettings) {
+//        SetNewValues();
         Button newgame = tetrisSettings.getFramesAtributes().mainWindowButtonNewGame(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
@@ -269,8 +272,8 @@ public class Tetriso extends Application {
         newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
-    public void ButtonAcctionEnd(Pane root) {
-        Button Exit = framesAtributes.mainWindowButtonExit(root);
+    public static void ButtonAcctionEnd(TetrisSettings tetrisSettings) {
+        Button Exit = tetrisSettings.getFramesAtributes().mainWindowButtonExit(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
@@ -281,27 +284,29 @@ public class Tetriso extends Application {
         Exit.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
-    public void ButtonAcctionOKToGame(TetrisSettings tetrisSettings) {
+    public static void ButtonAcctionOKToGame(TetrisSettings tetrisSettings) {
         // Tetriso.i te funkcje
-        SetNewValues();
+
         Button Play = tetrisSettings.getFramesAtributes().gamePropertiesWindowButtonPlay(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent e) {
-                if (NameOfPlayer.isEmpty() || NameOfPlayer.matches("^.*[^a-zA-Z].*$")) {
-                    WrongName = 1;
+                if (tetrisSettings.getNameOfPlayer().isEmpty() || tetrisSettings.getNameOfPlayer().matches("^.*[^a-zA-Z].*$")) {
+                    tetrisSettings.setWrongName(1);
                     TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
 
                     FrameDataOfPlayer(tetrisSettings);
                 } else {
-                    WrongName = 0;
+                    tetrisSettings.setWrongName(0);
                     tetrisSettings.getRoot().getChildren()
                         .clear();
                     tetrisSettings.getPrimaryStage().close();
+                    TetrisGame tetrs = new TetrisGame(tetrisSettings);
+                    tetrs.SetNewValues();
                     // Tetriso.TetrisGame(scene);
-                    Scene scene = new Scene(Create());
-                    TetrisGame(scene);
+                    Scene scene = new Scene(tetrs.Create());
+                    tetrs.TetrisGame(scene);
                     TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), scene);
                 }
             }
@@ -309,13 +314,28 @@ public class Tetriso extends Application {
         Play.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
-    public void ButtonCancelToBack(TetrisSettings tetrisSettings) {
+    public static void ButtonCancelToBack(TetrisSettings tetrisSettings) {
         Button Cancel = tetrisSettings.getFramesAtributes().gamePropertiesWindowButtonCancel(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent e) {
-                WrongName = 0;
+                tetrisSettings.setWrongName(0);
+                FrameMainMenu(tetrisSettings);
+            }
+        };
+        Cancel.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+    }
+
+    public static void ButtonOKReturn(TetrisSettings tetrisSettings) {
+//            (Pane root, Stage stage, TableView<Player> table, LinkedList<DataPlayer> allplayers, Scene MainScene,
+//            Canvas MainBoard, ObservableList<Player> data, Canvas DataBoard) {
+        Button OK = tetrisSettings.getFramesAtributes().gameOverWindowButtonOK(tetrisSettings.getRoot());
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent e) {
+                tetrisSettings.getAttributesFile().SaveProgress(tetrisSettings.getAllplayers());
 
 //                TetrisSettings tetrisSettings = new TetrisSettings();
 //                tetrisSettings.setRoot(root);
@@ -331,34 +351,6 @@ public class Tetriso extends Application {
 //                tetrisSettings.setAttributesFile(AttributesFile);
 
                 FrameMainMenu(tetrisSettings);
-            }
-        };
-        Cancel.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-    }
-
-    public void ButtonOKReturn(Pane root, Stage stage, TableView<Player> table, LinkedList<DataPlayer> allplayers, Scene MainScene,
-            Canvas MainBoard, ObservableList<Player> data, Canvas DataBoard) {
-        Button OK = framesAtributes.gameOverWindowButtonOK(root);
-        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent e) {
-                AttributesFile.SaveProgress(allplayers);
-
-                TetrisSettings tetrisSettings = new TetrisSettings();
-                tetrisSettings.setRoot(root);
-                tetrisSettings.setMainBoard(MainBoard);
-                tetrisSettings.setScene(MainScene);
-                tetrisSettings.setPrimaryStage(stage);
-                tetrisSettings.setTable(table);
-                tetrisSettings.setData(data);
-                tetrisSettings.setAllplayers(allplayers);
-                tetrisSettings.setDataBoard(DataBoard);
-                tetrisSettings.setFramesAtributes(framesAtributes);
-                tetrisSettings.setAttributesData(AttributesData);
-                tetrisSettings.setAttributesFile(AttributesFile);
-
-                FrameMainMenu(tetrisSettings);
 
 //                FrameMainMenu(root, MainBoard, MainScene, stage, table, data, allplayers, DataBoard);
             }
@@ -368,9 +360,9 @@ public class Tetriso extends Application {
     // --------------------------------------------------------------------------------------
     // --------------------------------------------------------------------------------------
 
-    public Player player;
+    public static Player player;
 
-    public void SetPlayersToTable(LinkedList<DataPlayer> allplayers, ObservableList<Player> data) {
+    public static void SetPlayersToTable(LinkedList<DataPlayer> allplayers, ObservableList<Player> data) {
         int size = allplayers.size();
         DataPlayer pom = new DataPlayer();
         for (int i = 0; i < size; i++) {
@@ -380,268 +372,5 @@ public class Tetriso extends Application {
         }
     }
 
-    // ---------------------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------------------
-    private double EasyLevel = 0.5;
-    private double MediumLevel = 0.35;
-    private double HardLevel = 0.2;
-    private double time;
-    private Point pieceOrigin;
-    private int currentPiece;
-    private int rotation;
-    private ArrayList<Integer> nextPieces = new ArrayList<>();
-    private long score;
-    private String NameOfPlayer = new String();
-    private int DifficultyLevel;
-    private Color[][] well;
-    private Point[][][] Tetraminos = {
-            // I-Piece
-            {{new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(3, 1)},
-                    {new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(1, 3)},
-                    {new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(3, 1)},
-                    {new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(1, 3)}},
-            // J-Piece
-            {{new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(2, 0)},
-                    {new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(2, 2)},
-                    {new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(0, 2)},
-                    {new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(0, 0)}},
-            // L-Piece
-            {{new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(2, 2)},
-                    {new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(0, 2)},
-                    {new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(0, 0)},
-                    {new Point(1, 0), new Point(1, 1), new Point(1, 2), new Point(2, 0)}},
-            // O-Piece
-            {{new Point(0, 0), new Point(0, 1), new Point(1, 0), new Point(1, 1)},
-                    {new Point(0, 0), new Point(0, 1), new Point(1, 0), new Point(1, 1)},
-                    {new Point(0, 0), new Point(0, 1), new Point(1, 0), new Point(1, 1)},
-                    {new Point(0, 0), new Point(0, 1), new Point(1, 0), new Point(1, 1)}},
-            // S-Piece
-            {{new Point(1, 0), new Point(2, 0), new Point(0, 1), new Point(1, 1)},
-                    {new Point(0, 0), new Point(0, 1), new Point(1, 1), new Point(1, 2)},
-                    {new Point(1, 0), new Point(2, 0), new Point(0, 1), new Point(1, 1)},
-                    {new Point(0, 0), new Point(0, 1), new Point(1, 1), new Point(1, 2)}},
-            // T-Piece
-            {{new Point(1, 0), new Point(0, 1), new Point(1, 1), new Point(2, 1)},
-                    {new Point(1, 0), new Point(0, 1), new Point(1, 1), new Point(1, 2)},
-                    {new Point(0, 1), new Point(1, 1), new Point(2, 1), new Point(1, 2)},
-                    {new Point(1, 0), new Point(1, 1), new Point(2, 1), new Point(1, 2)}},
-            // Z-Piece
-            {{new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(2, 1)},
-                    {new Point(1, 0), new Point(0, 1), new Point(1, 1), new Point(0, 2)},
-                    {new Point(0, 0), new Point(1, 0), new Point(1, 1), new Point(2, 1)},
-                    {new Point(1, 0), new Point(0, 1), new Point(1, 1), new Point(0, 2)}}};
-    private Color[] tetraminoColors = {Color.CYAN, Color.BLUE, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.PINK, Color.RED};
 
-    public void TetrisGame(Scene scene) {
-        scene.setOnKeyPressed(e -> {
-            switch (e.getCode()) {
-                case SPACE:
-                    break;
-                case UP:
-                    rotate(+1);
-                    break;
-                case LEFT:
-                    move(-1);
-                    break;
-                case RIGHT:
-                    move(+1);
-                    break;
-                case DOWN:
-                    score += DifficultyLevel();
-                    moveDown(+1);
-                    break;
-                default:
-                    break;
-            }
-        });
-        timer = new AnimationTimer() {
-
-            @Override
-            public void handle(long now) {
-                time += 0.017;
-
-                if (time >= ChooseLevel()) {
-                    moveDown(+1);
-                    time = 0;
-                }
-            }
-        };
-        timer.start();
-    }
-
-    public double ChooseLevel() {
-        if (DifficultyLevel == 1) {
-            return EasyLevel;
-        }
-        if (DifficultyLevel == 2) {
-            return MediumLevel;
-        } else {
-            return HardLevel;
-        }
-
-    }
-
-    public Parent Create() {
-        Pane RootForTetris = new Pane();
-        RootForTetris.getChildren()
-                     .addAll(GameBoard);
-        repaint();
-        return RootForTetris;
-    }
-
-    public void SetNewValues() {
-        repaint();
-        init();
-        currentPiece = 0;
-        rotation = 0;
-        score = 0;
-    }
-
-    @Override
-    public void init() {
-        well = new Color[12][24];
-        for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 23; j++) {
-                if (i == 0 || i == 11 || j == 22) {
-                    well[i][j] = Color.GRAY;
-                } else {
-                    well[i][j] = Color.BLACK;
-                }
-            }
-        }
-        newPiece();
-    }
-
-    public void MakeBoard(GraphicsContext r) {
-        for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 23; j++) {
-                r.setFill(well[i][j]);
-                r.fillRect(26 * i, 26 * j, 25, 25);
-            }
-        }
-    }
-
-    public void newPiece() {
-        pieceOrigin = new Point(5, 0);
-        rotation = 0;
-        if (nextPieces.isEmpty()) {
-            Collections.addAll(nextPieces, 0, 1, 2, 3, 4, 5, 6);
-            Collections.shuffle(nextPieces);
-        }
-        currentPiece = nextPieces.get(0);
-        nextPieces.remove(0);
-
-        if ((collidesAt(5, 1, rotation) || collidesAt(4, 1, rotation) || collidesAt(6, 1, rotation)) == true) {
-            timer.stop();
-            AttributesData.SetNewPlayer(allplayers, NameOfPlayer, score);
-            FrameEndScreen(root, primaryStage, GameOverBoard, MainScene, table, score, allplayers, MainBoard, data, DataBoard);
-        }
-    }
-
-    public void move(int i) {
-        if (!collidesAt(pieceOrigin.x + i, pieceOrigin.y, rotation)) {
-            pieceOrigin.x += i;
-        }
-        repaint();
-    }
-
-    public void moveDown(int i) {
-        if (collidesAt(pieceOrigin.x, pieceOrigin.y + i, rotation) != true) {
-            pieceOrigin.y += i;
-        } else {
-            fixToWell();
-        }
-        repaint();
-    }
-
-    public void rotate(int i) {
-        int newRotation = (rotation + i) % 4;
-        if (newRotation < 0) {
-            newRotation = 3;
-        }
-        if (!collidesAt(pieceOrigin.x, pieceOrigin.y, newRotation)) {
-            rotation = newRotation;
-        }
-        repaint();
-    }
-
-    boolean collidesAt(int x, int y, int rotation) {
-        for (Point p : Tetraminos[currentPiece][rotation]) {
-            if (well[p.x + x][p.y + y] != Color.BLACK) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void repaint() {
-        gc.clearRect(0, 0, GameBoard.getWidth(), GameBoard.getHeight());
-        MakeBoard(gc);
-        drawPiece(gc);
-        gc.strokeText("" + score, 40 * 12, 25);
-        gc.strokeText("Instruction", 30 * 12, 100);
-        gc.strokeText("KEY.UP - Rotation of Block", 30 * 12, 120);
-        gc.strokeText("KEY.DWON - Faster falling a Block", 30 * 12, 140);
-        gc.strokeText("KEY.LEFT - Block goes left", 30 * 12, 160);
-        gc.strokeText("KEY.RIGHT - Block goes right", 30 * 12, 180);
-    }
-
-    public void fixToWell() {
-        for (Point p : Tetraminos[currentPiece][rotation]) {
-            well[pieceOrigin.x + p.x][pieceOrigin.y + p.y] = tetraminoColors[currentPiece];
-        }
-        ClearRows();
-        newPiece();
-    }
-
-    boolean ClearRows() {
-        boolean gap;
-        int numClears = 0;
-        for (int j = 21; j > 0; j--) {
-            gap = false;
-            for (int i = 1; i < 11; i++) {
-                if (well[i][j] == Color.BLACK) {
-                    gap = true;
-                    break;
-                }
-            }
-            if (gap != true) {
-                deleteRow(j);
-                j += 1;
-                numClears += 1;
-            }
-        }
-        score += numClears * DifficultyLevel() * 100;
-        return false;
-    }
-
-    public int DifficultyLevel() {
-        if (DifficultyLevel == 1) {
-            return 1;
-        }
-        if (DifficultyLevel == 2) {
-            return 2;
-        }
-        if (DifficultyLevel == 3) {
-            return 3;
-        } else {
-            return 0;
-        }
-    }
-
-    public void deleteRow(int row) {
-        for (int j = row - 1; j > 0; j--) {
-            for (int i = 1; i < 11; i++) {
-                well[i][j + 1] = well[i][j];
-            }
-        }
-    }
-
-    public void drawPiece(GraphicsContext r) {
-        for (Point p : Tetraminos[currentPiece][rotation]) {
-            r.setFill(tetraminoColors[currentPiece]);
-            r.fillRect((p.x + pieceOrigin.x) * 26, (p.y + pieceOrigin.y) * 26, 25, 25);
-        }
-    }
 }
