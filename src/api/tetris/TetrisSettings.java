@@ -32,6 +32,11 @@ public class TetrisSettings {
     private InOutAttributes AttributesFile;
     private DataAllPlayers AttributesData;
 
+    private int wrongName;
+    private String nameOfPlayer = new String();
+    private int difficultyLevel;
+
+
     public TetrisSettings() {}
 
     public TetrisSettings(Pane root, Stage primaryStage, Canvas gameOverBoard, Scene scene, TableView<Player> table, LinkedList<DataPlayer> allplayers, Canvas mainBoard, ObservableList<Player> data, Canvas dataBoard) {
@@ -155,5 +160,29 @@ public class TetrisSettings {
 
     public void setAttributesData(DataAllPlayers attributesData) {
         AttributesData = attributesData;
+    }
+
+    public int getWrongName() {
+        return wrongName;
+    }
+
+    public void setWrongName(int wrongName) {
+        this.wrongName = wrongName;
+    }
+
+    public String getNameOfPlayer() {
+        return nameOfPlayer;
+    }
+
+    public void setNameOfPlayer(String nameOfPlayer) {
+        this.nameOfPlayer = nameOfPlayer;
+    }
+
+    public int getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(int difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
     }
 }

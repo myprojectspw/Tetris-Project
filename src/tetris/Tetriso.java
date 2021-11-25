@@ -190,8 +190,6 @@ public class Tetriso extends Application {
     }
 
     public void FrameDataOfPlayer(TetrisSettings tetrisSettings) {
-//            (Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene MainScene,
-//            Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
         TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
         tetrisSettings.getRoot().getChildren()
             .addAll(tetrisSettings.getDataBoard());
@@ -287,20 +285,21 @@ public class Tetriso extends Application {
         Exit.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
-    public void ButtonAcctionOKToGame(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene scene,
+    public void ButtonAcctionOKToGame
+            (Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene scene,
             Canvas MainBoard, Canvas DataBoard, LinkedList<DataPlayer> allplayers) {
         // Tetriso.i te funkcje
         SetNewValues();
-        repaint();
-        init();
-        Button Play = framesAtributes.gamePropertiesWindowButtonPlay(root);
+//        repaint();
+//        init();
+        Button Play = tetrisSettings.getFramesAtributes().gamePropertiesWindowButtonPlay(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent e) {
                 if (NameOfPlayer.isEmpty() || NameOfPlayer.matches("^.*[^a-zA-Z].*$")) {
                     WrongName = 1;
-                    TetrisUtils.ClearScreenForNewWindow(stage, root);
+                    TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
 
                     FrameDataOfPlayer(tetrisSettings);
 
@@ -308,13 +307,13 @@ public class Tetriso extends Application {
 //                    FrameDataOfPlayer(root, stage, table, data, scene, MainBoard, allplayers, DataBoard);
                 } else {
                     WrongName = 0;
-                    root.getChildren()
+                    tetrisSettings.getRoot().getChildren()
                         .clear();
-                    stage.close();
+                    tetrisSettings.getPrimaryStage().close();
                     // Tetriso.TetrisGame(scene);
                     Scene scene = new Scene(Create());
                     TetrisGame(scene);
-                    TetrisUtils.ShowScene(stage, scene);
+                    TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), scene);
                 }
             }
         };
