@@ -124,7 +124,7 @@ public class Tetriso extends Application {
             .addAll(tetrisSettings.getMainBoard());
 
         // Menu
-        ButtonAcctionNewGame(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage(), tetrisSettings.getTable(), tetrisSettings.getData(), tetrisSettings.getScene(), tetrisSettings.getMainBoard(), tetrisSettings.getAllplayers(), tetrisSettings.getDataBoard());
+        ButtonAcctionNewGame(tetrisSettings);
         FrameHighScores(tetrisSettings);
         ButtonAcctionEnd(tetrisSettings.getRoot());
 
@@ -170,7 +170,6 @@ public class Tetriso extends Application {
                         data.clear();
 
                         FrameMainMenu(tetrisSettings);
-//                        FrameMainMenu(root, MainBoard, MainScene, stage, table, data, allplayers, DataBoard);
                     }
                 };
                 OKToMenu.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
@@ -256,20 +255,21 @@ public class Tetriso extends Application {
     // ButtonActions
     // --------------------------------------------------------------------------------
 
-    public void ButtonAcctionNewGame(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene scene,
-            Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
+    public void ButtonAcctionNewGame(TetrisSettings tetrisSettings) {
+//            Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data, Scene scene,
+//            Canvas MainBoard, LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
         //
         SetNewValues();
-        Button Newgame = framesAtributes.mainWindowButtonNewGame(root);
+        Button newgame = tetrisSettings.getFramesAtributes().mainWindowButtonNewGame(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent e) {
-                TetrisUtils.ClearScreenForNewWindow(stage, root);
-                FrameDataOfPlayer(root, stage, table, data, scene, MainBoard, allplayers, DataBoard);
+                TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
+                FrameDataOfPlayer(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage(), tetrisSettings.getTable(), tetrisSettings.getData(), tetrisSettings.getScene(), tetrisSettings.getMainBoard(), tetrisSettings.getAllplayers(), tetrisSettings.getDataBoard());
             }
         };
-        Newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
     public void ButtonAcctionEnd(Pane root) {
