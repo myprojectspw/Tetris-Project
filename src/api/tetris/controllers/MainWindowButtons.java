@@ -3,6 +3,7 @@ package api.tetris.controllers;
 
 import api.tetris.TetrisSettings;
 import api.tetris.windows.GamePropertiesWindow;
+import api.tetris.windows.MainWindow;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -17,105 +18,117 @@ import tetris.TetrisUtils;
 import tetris.Tetriso;
 
 public class MainWindowButtons {
-    // FRAME
-    public static void FrameMainMenu(TetrisSettings tetrisSettings) {
-
-        // New window prepare
-        TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
-        tetrisSettings.getFramesAtributes().mainWindowImage(tetrisSettings.getRoot());
-        tetrisSettings.getFramesAtributes().mainWindowLabelMain(tetrisSettings.getRoot());
-        tetrisSettings.getRoot().getChildren()
-                .addAll(tetrisSettings.getMainBoard());
-
-        // Menu of buttons
-        MainWindowButtons.ButtonActionNewGame(tetrisSettings);
-        MainWindowButtons.ButtonActionHighScores(tetrisSettings);
-        MainWindowButtons.ButtonActionExit(tetrisSettings);
-
-        TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), tetrisSettings.getScene());
-    }
-
-    // BUTTON CONTROLERS
+    // Controllers Buttons
     public static void ButtonActionNewGame(TetrisSettings tetrisSettings) {
+        // Create button
+        Button newgameButton = tetrisSettings.getFramesAtributes().mainWindowButtonNewGame(tetrisSettings.getRoot());
 
-        Button newgame = tetrisSettings.getFramesAtributes().mainWindowButtonNewGame(tetrisSettings.getRoot());
+        // Add logic
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent e) {
+                // Choose game properties
                 TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
                 GamePropertiesWindow.FrameDataOfPlayer(tetrisSettings);
             }
         };
-        newgame.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        // Add event handler
+        newgameButton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
     public static void ButtonActionHighScores(TetrisSettings tetrisSettings) {
-        Button HighScore = tetrisSettings.getFramesAtributes().mainWindowButtonHighScores(tetrisSettings.getRoot());
-        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+        // Create button
+        Button highScoreButton = tetrisSettings.getFramesAtributes().mainWindowButtonHighScores(tetrisSettings.getRoot());
 
+        // Add logic
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
             @Override
             @SuppressWarnings("unchecked")
             public void handle(MouseEvent e) {
+                // Show data table with players scores
                 TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
-                Scene scene = new Scene(new Group());
-
-                Label label = new Label("Scores of All Players");
-                label.setFont(new Font("Arial", 20));
-
-                tetrisSettings.getTable().setEditable(true);
-
-                @SuppressWarnings("rawtypes")
-                TableColumn RankOfPlayers = tetrisSettings.getAttributesData().TableColumnRankOfPlayersProperties();
-                @SuppressWarnings("rawtypes")
-                TableColumn NameOfPlayers = tetrisSettings.getAttributesData().TableColumnNameOfPlayersProperties();
-                @SuppressWarnings("rawtypes")
-                TableColumn ScoreOfPlayers = tetrisSettings.getAttributesData().TableColumnScoreOfPlayersProperties();
-                // Tetriso
-                Tetriso.SetPlayersToTable(tetrisSettings.getAllplayers(), tetrisSettings.getData());
-                tetrisSettings.getTable().setItems(tetrisSettings.getData());
-                tetrisSettings.getTable().getColumns()
-                        .addAll(RankOfPlayers, NameOfPlayers, ScoreOfPlayers);
-
-                Button OKToMenu = tetrisSettings.getFramesAtributes().highScoresWindowButtonOK(tetrisSettings.getRoot());
-
-                EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
-
-                    @Override
-                    public void handle(MouseEvent e) {
-                        tetrisSettings.getTable().getColumns()
-                                .clear();
-                        tetrisSettings.getData().clear();
-
-                        MainWindowButtons.FrameMainMenu(tetrisSettings);
-                    }
-                };
-                OKToMenu.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-
-                VBox vbox = new VBox();
-                vbox.setSpacing(5);
-                vbox.setPadding(new Insets(10, 0, 0, 10));
-                vbox.getChildren()
-                        .addAll(label, tetrisSettings.getTable());
-
-                ((Group) scene.getRoot()).getChildren()
-                        .addAll(vbox, OKToMenu);
-
+                Scene scene = createDatatable(tetrisSettings);
                 TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), scene);
             }
         };
-        HighScore.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        // Add event handler
+        highScoreButton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
     public static void ButtonActionExit(TetrisSettings tetrisSettings) {
-        Button exit = tetrisSettings.getFramesAtributes().mainWindowButtonExit(tetrisSettings.getRoot());
+        // Create button
+        Button exitButton = tetrisSettings.getFramesAtributes().mainWindowButtonExit(tetrisSettings.getRoot());
+
+        // Add logic
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                // exit program
+                System.exit(-1);
+            }
+        };
+
+        // Add event handler
+        exitButton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+    }
+
+    // Utils
+    public static Scene createDatatable(TetrisSettings tetrisSettings) {
+        Scene scene = new Scene(new Group());
+
+        Label label = new Label("Scores of All Players");
+        label.setFont(new Font("Arial", 20));
+
+        tetrisSettings.getTable().setEditable(true);
+
+        @SuppressWarnings("rawtypes")
+        TableColumn RankOfPlayers = tetrisSettings.getAttributesData().TableColumnRankOfPlayersProperties();
+        @SuppressWarnings("rawtypes")
+        TableColumn NameOfPlayers = tetrisSettings.getAttributesData().TableColumnNameOfPlayersProperties();
+        @SuppressWarnings("rawtypes")
+        TableColumn ScoreOfPlayers = tetrisSettings.getAttributesData().TableColumnScoreOfPlayersProperties();
+        // Tetriso
+        Tetriso.SetPlayersToTable(tetrisSettings.getAllplayers(), tetrisSettings.getData());
+        tetrisSettings.getTable().setItems(tetrisSettings.getData());
+        tetrisSettings.getTable().getColumns()
+                .addAll(RankOfPlayers, NameOfPlayers, ScoreOfPlayers);
+
+        Button okBackToMenuButton = createBackToMainMenu(tetrisSettings);
+
+        VBox vbox = new VBox();
+        vbox.setSpacing(5);
+        vbox.setPadding(new Insets(10, 0, 0, 10));
+        vbox.getChildren()
+                .addAll(label, tetrisSettings.getTable());
+
+        ((Group) scene.getRoot()).getChildren()
+                .addAll(vbox, okBackToMenuButton);
+
+        return scene;
+    }
+
+    public static Button createBackToMainMenu(TetrisSettings tetrisSettings) {
+        // Create button
+        Button okBackToMenuButton = tetrisSettings.getFramesAtributes().highScoresWindowButtonOK(tetrisSettings.getRoot());
+
+        // Add logic
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent e) {
-                System.exit(-1);
+                tetrisSettings.getTable().getColumns()
+                        .clear();
+                tetrisSettings.getData().clear();
+
+                MainWindow.FrameMainMenu(tetrisSettings);
             }
         };
-        exit.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        // Add event handler
+        okBackToMenuButton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        return okBackToMenuButton;
     }
 }

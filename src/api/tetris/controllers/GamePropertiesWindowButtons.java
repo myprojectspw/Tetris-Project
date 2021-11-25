@@ -2,6 +2,7 @@ package api.tetris.controllers;
 
 import api.tetris.TetrisSettings;
 import api.tetris.windows.GamePropertiesWindow;
+import api.tetris.windows.MainWindow;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -53,7 +54,7 @@ public class GamePropertiesWindowButtons {
             public void handle(MouseEvent e) {
                 // If cancel go back to main menu
                 tetrisSettings.setWrongName(0);
-                MainWindowButtons.FrameMainMenu(tetrisSettings);
+                MainWindow.FrameMainMenu(tetrisSettings);
             }
         };
 

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import api.tetris.TetrisSettings;
 import api.tetris.controllers.MainWindowButtons;
 import api.tetris.controllers.TetrisGame;
+import api.tetris.windows.MainWindow;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -34,7 +35,7 @@ public class Tetriso extends Application {
     public void start(Stage stage) {
         SetMainPropertiesForGame(stage);
 
-        MainWindowButtons.FrameMainMenu(tetrisSettings);
+        MainWindow.FrameMainMenu(tetrisSettings);
 
     }
 

@@ -1,6 +1,7 @@
 package api.tetris.controllers;
 
 import api.tetris.TetrisSettings;
+import api.tetris.windows.MainWindow;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -17,7 +18,7 @@ public class GameOverWindowButtons {
             public void handle(MouseEvent e) {
                 // Game ended, save player and back to main menu
                 tetrisSettings.getAttributesFile().SaveProgress(tetrisSettings.getAllplayers());
-                MainWindowButtons.FrameMainMenu(tetrisSettings);
+                MainWindow.FrameMainMenu(tetrisSettings);
             }
         };
 
