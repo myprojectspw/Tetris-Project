@@ -1,7 +1,7 @@
-package api.tetris.controllers;
+package api.controllers;
 
-import api.tetris.settings.TetrisSettings;
-import api.tetris.windows.MainWindow;
+import api.settings.TetrisSettings;
+import api.windows.MainWindow;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;

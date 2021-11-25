@@ -1,4 +1,4 @@
-package api.tetris.settings;
+package api.settings;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,10 +10,12 @@ import java.util.LinkedList;
 
 public class InOutAttributes {
 
+    private String pathName = "src\\api\\saves\\Game.ser";
+
     public InOutAttributes() {}
 
     public void SaveProgress(LinkedList<DataPlayer> allplayers) {
-        File file = new File("Game.ser");
+        File file = new File(pathName);
         FileOutputStream fileOut = null;
         try {
             ObjectOutputStream out = null;
@@ -30,7 +32,7 @@ public class InOutAttributes {
     @SuppressWarnings("unchecked")
     public Object LoadProgress(LinkedList<DataPlayer> allplayers) throws ClassNotFoundException {
         Object Obj = new Object();
-        File file = new File("Game.ser");
+        File file = new File(pathName);
         ObjectInputStream in = null;
         try {
             in = new ObjectInputStream(new FileInputStream(file));

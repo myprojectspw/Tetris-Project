@@ -1,6 +1,6 @@
-package api.tetris.settings;
+package api.settings;
 
-import api.tetris.gui.FramesAttributes;
+import api.gui.FramesAttributes;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;

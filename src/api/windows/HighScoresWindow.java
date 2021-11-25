@@ -1,12 +1,12 @@
-package api.tetris.windows;
+package api.windows;
 
-import api.tetris.settings.DataPlayer;
-import api.tetris.settings.Player;
-import api.tetris.settings.TetrisSettings;
-import api.tetris.controllers.HighScoresWindowButtons;
+import api.settings.DataPlayer;
+import api.settings.Player;
+import api.settings.TetrisSettings;
+import api.controllers.HighScoresWindowButtons;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
-import api.tetris.settings.TetrisUtils;
+import api.settings.TetrisUtils;
 
 import java.util.LinkedList;
 

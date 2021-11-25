@@ -2,8 +2,8 @@ package tetris;
 
 import java.util.LinkedList;
 
-import api.tetris.settings.*;
-import api.tetris.windows.MainWindow;
+import api.settings.*;
+import api.windows.MainWindow;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +12,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import api.tetris.gui.FramesAttributes;
+import api.gui.FramesAttributes;
 
 public class App extends Application {
 

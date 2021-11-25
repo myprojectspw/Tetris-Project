@@ -1,6 +1,6 @@
-package api.tetris.controllers;
-import api.tetris.settings.TetrisSettings;
-import api.tetris.windows.GameOverWindow;
+package api.controllers;
+import api.settings.TetrisSettings;
+import api.windows.GameOverWindow;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

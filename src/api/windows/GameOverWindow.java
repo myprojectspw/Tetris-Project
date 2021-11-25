@@ -1,8 +1,8 @@
-package api.tetris.windows;
+package api.windows;
 
-import api.tetris.settings.TetrisSettings;
-import api.tetris.controllers.GameOverWindowButtons;
-import api.tetris.settings.TetrisUtils;
+import api.settings.TetrisSettings;
+import api.controllers.GameOverWindowButtons;
+import api.settings.TetrisUtils;
 
 public class GameOverWindow {
     // Frame
