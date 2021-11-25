@@ -8,15 +8,20 @@ import javafx.scene.input.MouseEvent;
 public class GameOverWindowButtons {
     // Controllers Buttons
     public static void ButtonOKReturn(TetrisSettings tetrisSettings) {
-        Button OK = tetrisSettings.getFramesAtributes().gameOverWindowButtonOK(tetrisSettings.getRoot());
-        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+        // Create button
+        Button okButton = tetrisSettings.getFramesAtributes().gameOverWindowButtonOK(tetrisSettings.getRoot());
 
+        // Add logic
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
+                // Game ended, save player and back to main menu
                 tetrisSettings.getAttributesFile().SaveProgress(tetrisSettings.getAllplayers());
                 MainWindowButtons.FrameMainMenu(tetrisSettings);
             }
         };
-        OK.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        // Add event handler
+        okButton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 }

@@ -2,14 +2,11 @@ package api.tetris.controllers;
 
 import api.tetris.TetrisSettings;
 import api.tetris.windows.GamePropertiesWindow;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import tetris.TetrisUtils;
-import tetris.Tetriso;
 
 public class GamePropertiesWindowButtons {
 
@@ -35,7 +32,6 @@ public class GamePropertiesWindowButtons {
                             .clear();
                     tetrisSettings.getPrimaryStage().close();
                     TetrisGame tetris = new TetrisGame(tetrisSettings);
-
                     Scene scene = new Scene(tetris.Create());
                     tetris.start(scene);
                     TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), scene);
@@ -48,15 +44,20 @@ public class GamePropertiesWindowButtons {
     }
 
     public static void ButtonCancelToBack(TetrisSettings tetrisSettings) {
-        Button Cancel = tetrisSettings.getFramesAtributes().gamePropertiesWindowButtonCancel(tetrisSettings.getRoot());
-        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
+        // Create button
+        Button cancelButton = tetrisSettings.getFramesAtributes().gamePropertiesWindowButtonCancel(tetrisSettings.getRoot());
 
+        // Add logic
+        EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
+                // If cancel go back to main menu
                 tetrisSettings.setWrongName(0);
                 MainWindowButtons.FrameMainMenu(tetrisSettings);
             }
         };
-        Cancel.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        // Add event handler
+        cancelButton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 }
