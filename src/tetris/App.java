@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import api.gui.FramesAttributes;
@@ -54,6 +55,11 @@ public class App extends Application {
         }
 
         tetrisSettings.setAllplayers(allplayers);
+
+        // Add logo and name
+        tetrisSettings.getPrimaryStage().getIcons().add(new Image("api/images/LogoTetris.jpg"));
+        tetrisSettings.getPrimaryStage().setTitle("Tetris");
+//        tetrisSettings.getPrimaryStage().setResizable(false);
     }
 
 

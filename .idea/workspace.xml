@@ -2,33 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f497f64-a7c2-43a7-b319-9534781a17f3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/saves/Game.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/controllers/GameOverWindowButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/GameOverWindowButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/controllers/GamePropertiesWindowButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/GamePropertiesWindowButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/controllers/HighScoresWindowButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/HighScoresWindowButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/controllers/MainWindowButtons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/MainWindowButtons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/controllers/TetrisGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/TetrisGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/gui/FramesAttributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/gui/FramesAttributes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/images/HighScores.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/images/HighScores.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/images/data.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/images/data.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/images/scores.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/images/scores.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/images/tetris2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/images/tetris2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/settings/DataAllPlayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/settings/DataAllPlayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/settings/DataPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/settings/DataPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/settings/InOutAttributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/settings/InOutAttributes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/settings/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/settings/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/settings/TetrisSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/settings/TetrisSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/settings/TetrisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/settings/TetrisUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/windows/GameOverWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/windows/GameOverWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/windows/GamePropertiesWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/windows/GamePropertiesWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/windows/HighScoresWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/windows/HighScoresWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/windows/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/windows/MainWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/images/LogoTetris.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tetris/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/tetris/images/HighScores.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/tetris/images/data.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/tetris/images/scores.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/api/tetris/images/tetris2.jpg" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,61 +20,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/settings/TetrisSettings.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tetris/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-289">
-              <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/windows/MainWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/gui/FramesAttributes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="95" column="43" selection-start-line="95" selection-start-column="43" selection-end-line="95" selection-end-column="43" />
+            <state relative-caret-position="188">
+              <caret line="57" column="8" lean-forward="true" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3151#3152#0" expanded="true" />
-                <element signature="e#3239#3240#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/api/settings/InOutAttributes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/settings/DataPlayer.java">
+        <entry file="file://$PROJECT_DIR$/src/api/settings/TetrisSettings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/api/controllers/MainWindowButtons.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+            <state relative-caret-position="-289">
+              <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -173,7 +112,6 @@
         <option value="$PROJECT_DIR$/src/tetris/Tetriso.java" />
         <option value="$PROJECT_DIR$/src/api/tetris/windows/HighScoresWindow.java" />
         <option value="$PROJECT_DIR$/src/api/tetris/settings/InOutAttributes.java" />
-        <option value="$PROJECT_DIR$/src/tetris/App.java" />
         <option value="$PROJECT_DIR$/src/api/controllers/GameOverWindowButtons.java" />
         <option value="$PROJECT_DIR$/src/api/controllers/GamePropertiesWindowButtons.java" />
         <option value="$PROJECT_DIR$/src/api/tetris/controllers/TetrisGame.java" />
@@ -187,6 +125,7 @@
         <option value="$PROJECT_DIR$/src/api/controllers/TetrisGame.java" />
         <option value="$PROJECT_DIR$/src/api/gui/FramesAttributes.java" />
         <option value="$PROJECT_DIR$/src/api/settings/InOutAttributes.java" />
+        <option value="$PROJECT_DIR$/src/tetris/App.java" />
       </list>
     </option>
   </component>
@@ -240,35 +179,13 @@
               <item name="Tetris-Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Tetris-Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Tetris-Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tetris-Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tetris-Project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="saves" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tetris-Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tetris-Project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tetris-Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tetris-Project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="windows" type="462c0819:PsiDirectoryNode" />
+              <item name="tetris" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -287,11 +204,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pa-wo\Desktop\Hobby\Projekty Programistyczne\Tetris-Project\src\api\images" />
       <recent name="C:\Users\pa-wo\Desktop\Hobby\Projekty Programistyczne\Tetris-Project\src\api\tetris\saves" />
       <recent name="C:\Users\pa-wo\Desktop\Hobby\Projekty Programistyczne\Tetris-Project\src\resources\saves" />
       <recent name="C:\Users\pa-wo\Desktop\Hobby\Projekty Programistyczne\Tetris-Project\src\resources" />
       <recent name="C:\Users\pa-wo\Desktop\Hobby\Projekty Programistyczne\Tetris-Project\src\api\tetris\settings" />
-      <recent name="C:\Users\pa-wo\Desktop\Hobby\Projekty Programistyczne\Tetris-Project\src\api\tetris\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -358,7 +275,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="ConsoleMavenPlugin" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.11756374" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.09206799" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.21954674" />
@@ -509,17 +426,6 @@
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tetris/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding>
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#823#824#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/controllers/GameOverWindowButtons.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -585,20 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/settings/TetrisSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/windows/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/settings/DataPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -620,8 +512,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/settings/InOutAttributes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+        <state relative-caret-position="340">
+          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/windows/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/settings/TetrisSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-289">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tetris/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="57" column="8" lean-forward="true" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
