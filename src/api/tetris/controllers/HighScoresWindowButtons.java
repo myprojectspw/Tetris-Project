@@ -1,6 +1,6 @@
 package api.tetris.controllers;
 
-import api.tetris.TetrisSettings;
+import api.tetris.settings.TetrisSettings;
 import api.tetris.windows.MainWindow;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

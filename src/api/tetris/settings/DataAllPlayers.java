@@ -1,6 +1,5 @@
-package tetris;
+package api.tetris.settings;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 
 import javafx.scene.control.TableColumn;
@@ -8,7 +7,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class DataAllPlayers {
 
-    DataAllPlayers() {}
+    public DataAllPlayers() {}
 
     public void SortAllPlayers(LinkedList<DataPlayer> allplayers) {
         int zmiana = 1;
@@ -80,23 +79,3 @@ public class DataAllPlayers {
     }
 }
 
-//@SuppressWarnings("serial")
-//class DataPlayer implements Serializable {
-//
-//    double Score;
-//    String Name_Of_Player;
-//
-//    public DataPlayer() {
-//        this.Score = 0;
-//    }
-//
-//    public DataPlayer(String Name_Of_Player, double Score) {
-//        this.Score = Score;
-//        this.Name_Of_Player = Name_Of_Player;
-//
-//    }
-//
-//    public void Show_Data_Of_Customer() {
-//        System.out.println(this.Name_Of_Player + " " + this.Score);
-//    }
-//}

@@ -1,13 +1,13 @@
 
 package api.tetris.controllers;
 
-import api.tetris.TetrisSettings;
+import api.tetris.settings.TetrisSettings;
 import api.tetris.windows.GamePropertiesWindow;
 import api.tetris.windows.HighScoresWindow;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import tetris.TetrisUtils;
+import api.tetris.settings.TetrisUtils;
 
 public class MainWindowButtons {
     // Controllers Buttons

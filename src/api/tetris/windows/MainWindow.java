@@ -1,8 +1,8 @@
 package api.tetris.windows;
 
-import api.tetris.TetrisSettings;
+import api.tetris.settings.TetrisSettings;
 import api.tetris.controllers.MainWindowButtons;
-import tetris.TetrisUtils;
+import api.tetris.settings.TetrisUtils;
 
 public class MainWindow {
     // Frame

@@ -1,4 +1,4 @@
-package api.tetris;
+package api.tetris.settings;
 
 import api.tetris.gui.FramesAttributes;
 import javafx.collections.ObservableList;
@@ -8,10 +8,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import tetris.DataAllPlayers;
-import tetris.DataPlayer;
-import tetris.InOutAttributes;
-import tetris.Player;
 
 import java.util.LinkedList;
 

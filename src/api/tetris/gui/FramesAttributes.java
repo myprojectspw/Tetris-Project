@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import tetris.TetrisUtils;
+import api.tetris.settings.TetrisUtils;
 
 public class FramesAttributes {
     // mainWindow(Label)Name VIOLET

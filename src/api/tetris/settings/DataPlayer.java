@@ -1,4 +1,4 @@
-package tetris;
+package api.tetris.settings;
 
 import java.io.Serializable;
 

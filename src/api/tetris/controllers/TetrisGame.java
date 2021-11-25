@@ -1,5 +1,5 @@
 package api.tetris.controllers;
-import api.tetris.TetrisSettings;
+import api.tetris.settings.TetrisSettings;
 import api.tetris.windows.GameOverWindow;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Parent;
@@ -8,7 +8,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.canvas.Canvas;
-import tetris.Tetriso;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -25,10 +24,7 @@ public class TetrisGame {
         this.DifficultyLevel = tetrisSettings.getDifficultyLevel();
         SetNewValues();
     }
-
     // ---------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------------
     private double EasyLevel = 0.5;
     private double MediumLevel = 0.35;
     private double HardLevel = 0.2;

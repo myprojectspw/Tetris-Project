@@ -1,11 +1,14 @@
 package api.tetris.windows;
 
-import api.tetris.TetrisSettings;
-import api.tetris.controllers.GameOverWindowButtons;
+import api.tetris.settings.DataPlayer;
+import api.tetris.settings.Player;
+import api.tetris.settings.TetrisSettings;
 import api.tetris.controllers.HighScoresWindowButtons;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
-import tetris.TetrisUtils;
-import tetris.Tetriso;
+import api.tetris.settings.TetrisUtils;
+
+import java.util.LinkedList;
 
 public class HighScoresWindow {
     public static void FrameHighScores(TetrisSettings tetrisSettings) {
@@ -37,11 +40,23 @@ public class HighScoresWindow {
         @SuppressWarnings("rawtypes")
         TableColumn ScoreOfPlayers = tetrisSettings.getAttributesData().TableColumnScoreOfPlayersProperties();
         // Tetriso
-        Tetriso.SetPlayersToTable(tetrisSettings.getAllplayers(), tetrisSettings.getData());
+        SetPlayersToTable(tetrisSettings.getAllplayers(), tetrisSettings.getData());
         tetrisSettings.getTable().setItems(tetrisSettings.getData());
         tetrisSettings.getTable().getColumns()
                 .addAll(RankOfPlayers, NameOfPlayers, ScoreOfPlayers);
 
         tetrisSettings.getRoot().getChildren().add(tetrisSettings.getTable());
+    }
+
+    public static Player player;
+
+    public static void SetPlayersToTable(LinkedList<DataPlayer> allplayers, ObservableList<Player> data) {
+        int size = allplayers.size();
+        DataPlayer pom = new DataPlayer();
+        for (int i = 0; i < size; i++) {
+            pom = allplayers.get(i);
+            player = new Player(String.valueOf(i + 1), pom.Name_Of_Player, String.valueOf(pom.Score));
+            data.add(player);
+        }
     }
 }

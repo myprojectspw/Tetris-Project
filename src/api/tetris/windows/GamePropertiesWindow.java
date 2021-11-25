@@ -1,6 +1,6 @@
 package api.tetris.windows;
 
-import api.tetris.TetrisSettings;
+import api.tetris.settings.TetrisSettings;
 import api.tetris.controllers.GamePropertiesWindowButtons;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -8,7 +8,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
-import tetris.TetrisUtils;
+import api.tetris.settings.TetrisUtils;
 
 public class GamePropertiesWindow {
     // Frame

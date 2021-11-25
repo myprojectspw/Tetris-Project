@@ -1,4 +1,4 @@
-package tetris;
+package api.tetris.settings;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
