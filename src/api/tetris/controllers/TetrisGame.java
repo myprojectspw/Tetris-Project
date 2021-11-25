@@ -22,6 +22,7 @@ public class TetrisGame {
     public TetrisGame() {}
     public TetrisGame(TetrisSettings tetrisSettings) {
         this.tetrisSettings = tetrisSettings;
+        this.DifficultyLevel = tetrisSettings.getDifficultyLevel();
         SetNewValues();
     }
 
