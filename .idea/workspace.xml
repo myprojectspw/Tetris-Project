@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f497f64-a7c2-43a7-b319-9534781a17f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/tetris/TetrisSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/tetris/TetrisProperties.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tetris/Tetriso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tetris/Tetriso.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -23,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tetris/Tetriso.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="119" selection-start-line="119" selection-end-line="119" />
+            <state relative-caret-position="218">
+              <caret line="205" column="10" lean-forward="true" selection-start-line="205" selection-start-column="10" selection-end-line="205" selection-end-column="10" />
               <folding>
                 <element signature="e#11780#11781#0" expanded="true" />
                 <element signature="e#11827#11828#0" expanded="true" />
@@ -346,13 +343,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.17988668" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.10623229" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3385269" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="ConsoleMavenPlugin" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.0694051" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.12747875" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.37677053" />
@@ -563,8 +560,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tetris/Tetriso.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
+        <state relative-caret-position="218">
+          <caret line="205" column="10" lean-forward="true" selection-start-line="205" selection-start-column="10" selection-end-line="205" selection-end-column="10" />
           <folding>
             <element signature="e#11780#11781#0" expanded="true" />
             <element signature="e#11827#11828#0" expanded="true" />

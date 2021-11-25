@@ -115,54 +115,51 @@ public class Tetriso extends Application {
     // --------------------------------------------------------------------------------
 
     public void FrameMainMenu(TetrisSettings tetrisSettings) {
-//            Pane root, Canvas MainBoard, Scene scene, Stage stage, TableView<Player> table, ObservableList<Player> data,
-//            LinkedList<DataPlayer> allplayers, Canvas DataBoard) {
+
         // New window prepare
         TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
         tetrisSettings.getFramesAtributes().mainWindowImage(tetrisSettings.getRoot());
         tetrisSettings.getFramesAtributes().mainWindowLabelMain(tetrisSettings.getRoot());
         tetrisSettings.getRoot().getChildren()
             .addAll(tetrisSettings.getMainBoard());
+
         // Menu
         ButtonAcctionNewGame(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage(), tetrisSettings.getTable(), tetrisSettings.getData(), tetrisSettings.getScene(), tetrisSettings.getMainBoard(), tetrisSettings.getAllplayers(), tetrisSettings.getDataBoard());
-        FrameHighScores(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage(), tetrisSettings.getTable(), tetrisSettings.getData(), tetrisSettings.getAllplayers(), tetrisSettings.getScene(), tetrisSettings.getMainBoard(), tetrisSettings.getDataBoard());
+        FrameHighScores(tetrisSettings);
         ButtonAcctionEnd(tetrisSettings.getRoot());
 
         TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), tetrisSettings.getScene());
     }
 
 
-    public void FrameHighScores(Pane root, Stage stage, TableView<Player> table, ObservableList<Player> data,
-            LinkedList<DataPlayer> allplayers, Scene MainScene, Canvas MainBoard, Canvas DataBoard) {
-        Button HighScore = framesAtributes.mainWindowButtonHighScores(root);
-        HighScore.setStyle("-fx-background-color: #ff0000; ");
+    public void FrameHighScores(TetrisSettings tetrisSettings) {
+        Button HighScore = tetrisSettings.getFramesAtributes().mainWindowButtonHighScores(tetrisSettings.getRoot());
         EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
             @Override
             @SuppressWarnings("unchecked")
             public void handle(MouseEvent e) {
-                TetrisUtils.ClearScreenForNewWindow(stage, root);
+                TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
                 Scene scene = new Scene(new Group());
-                stage.setTitle("Tetris");
 
                 Label label = new Label("Scores of All Players");
                 label.setFont(new Font("Arial", 20));
 
-                table.setEditable(true);
+                tetrisSettings.getTable().setEditable(true);
 
                 @SuppressWarnings("rawtypes")
-                TableColumn RankOfPlayers = AttributesData.TableColumnRankOfPlayersProperties();
+                TableColumn RankOfPlayers = tetrisSettings.getAttributesData().TableColumnRankOfPlayersProperties();
                 @SuppressWarnings("rawtypes")
-                TableColumn NameOfPlayers = AttributesData.TableColumnNameOfPlayersProperties();
+                TableColumn NameOfPlayers = tetrisSettings.getAttributesData().TableColumnNameOfPlayersProperties();
                 @SuppressWarnings("rawtypes")
-                TableColumn ScoreOfPlayers = AttributesData.TableColumnScoreOfPlayersProperties();
+                TableColumn ScoreOfPlayers = tetrisSettings.getAttributesData().TableColumnScoreOfPlayersProperties();
                 // Tetriso
-                SetPlayersToTable(allplayers, data);
-                table.setItems(data);
-                table.getColumns()
+                SetPlayersToTable(tetrisSettings.getAllplayers(), tetrisSettings.getData());
+                tetrisSettings.getTable().setItems(tetrisSettings.getData());
+                tetrisSettings.getTable().getColumns()
                      .addAll(RankOfPlayers, NameOfPlayers, ScoreOfPlayers);
 
-                Button OKToMenu = framesAtributes.highScoresWindowButtonOK(root);
+                Button OKToMenu = tetrisSettings.getFramesAtributes().highScoresWindowButtonOK(tetrisSettings.getRoot());
 
                 EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() {
 
@@ -171,19 +168,6 @@ public class Tetriso extends Application {
                         table.getColumns()
                              .clear();
                         data.clear();
-
-                        TetrisSettings tetrisSettings = new TetrisSettings();
-                        tetrisSettings.setRoot(root);
-                        tetrisSettings.setMainBoard(MainBoard);
-                        tetrisSettings.setScene(MainScene);
-                        tetrisSettings.setPrimaryStage(stage);
-                        tetrisSettings.setTable(table);
-                        tetrisSettings.setData(data);
-                        tetrisSettings.setAllplayers(allplayers);
-                        tetrisSettings.setDataBoard(DataBoard);
-                        tetrisSettings.setFramesAtributes(framesAtributes);
-                        tetrisSettings.setAttributesData(AttributesData);
-                        tetrisSettings.setAttributesFile(AttributesFile);
 
                         FrameMainMenu(tetrisSettings);
 //                        FrameMainMenu(root, MainBoard, MainScene, stage, table, data, allplayers, DataBoard);
@@ -195,12 +179,12 @@ public class Tetriso extends Application {
                 vbox.setSpacing(5);
                 vbox.setPadding(new Insets(10, 0, 0, 10));
                 vbox.getChildren()
-                    .addAll(label, table);
+                    .addAll(label, tetrisSettings.getTable());
 
                 ((Group) scene.getRoot()).getChildren()
                                          .addAll(vbox, OKToMenu);
 
-                TetrisUtils.ShowScene(stage, scene);
+                TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), scene);
             }
         };
         HighScore.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
