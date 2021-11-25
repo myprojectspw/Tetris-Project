@@ -47,6 +47,7 @@ public class Tetriso extends Application {
         tetrisSettings = new TetrisSettings();
         tetrisSettings.setRoot(new Pane());
         tetrisSettings.setMainBoard(new Canvas(400, 460));
+        tetrisSettings.setHighScoresBoard(new Canvas(400, 520));
         tetrisSettings.setGameOverBoard(new Canvas(290, 280));
         tetrisSettings.setDataBoard(new Canvas(290, 280));
         tetrisSettings.setGameBoard(new Canvas(600, 600));

@@ -25,6 +25,7 @@ public class TetrisSettings {
     private Canvas mainBoard;
     private ObservableList<Player> data;
     private Canvas dataBoard;
+    private Canvas highScoresBoard;
     private GraphicsContext graphicsContext;
     private Canvas gameBoard;
 
@@ -193,5 +194,13 @@ public class TetrisSettings {
 
     public void setScore(long score) {
         this.score = score;
+    }
+
+    public Canvas getHighScoresBoard() {
+        return highScoresBoard;
+    }
+
+    public void setHighScoresBoard(Canvas highScoresBoard) {
+        this.highScoresBoard = highScoresBoard;
     }
 }

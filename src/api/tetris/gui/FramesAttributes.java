@@ -11,6 +11,7 @@ public class FramesAttributes {
     // gamePropertiesWindow BLUE
     // highScoresWindow
     // gameOverWindow YELLOW
+    // gameHighScoresWindow GREEN
 
     public FramesAttributes() {
     }
@@ -42,6 +43,9 @@ public class FramesAttributes {
 
     public void gamePropertiesWindowWrongPlayerName(Pane root) {
         TetrisUtils.prepareLabel(root, "Wrong Name Of Player", "Arial", 20.0D, 50.0D, 5.0D);
+    }
+    public void gameHighScoresWindowMainLabel(Pane root) {
+        TetrisUtils.prepareLabel(root, "Scores of All Players", "Arial", 20.0D, 50.0D, 5.0D);
     }
 
     // BUTTONS =========================================================================================================
@@ -77,16 +81,19 @@ public class FramesAttributes {
     // Images  =========================================================================================================
 
     public void mainWindowImage(Pane root) {
-        TetrisUtils.prepareImage(root, "api/tetris/images/tetris2.jpg", 500.0D, 400.0D);
+        TetrisUtils.prepareImage(root, "api/tetris/images/tetris2.jpg", 500.0D, 420.0D);
     }
 
     public void gamePropertiesWindowImage(Pane root) {
-        TetrisUtils.prepareImage(root, "api/tetris/images/data.jpg", 280.0D, 290.0D);
+        TetrisUtils.prepareImage(root, "api/tetris/images/data.jpg", 300.0D, 300.0D);
     }
 
     public void gameOverWindowImage(Pane root) {
-        TetrisUtils.prepareImage(root, "api/tetris/images/scores.jpg", 290.0D, 290.0D);
+        TetrisUtils.prepareImage(root, "api/tetris/images/scores.jpg", 300.0D, 300.0D);
+    }
 
+    public void gameHighScoresWindowImage(Pane root) {
+        TetrisUtils.prepareImage(root, "api/tetris/images/HighScores.jpg", 550.0D, 410.0D);
     }
 
     // Radiobutton ====================================================================================================
