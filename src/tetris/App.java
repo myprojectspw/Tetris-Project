@@ -59,7 +59,7 @@ public class App extends Application {
         // Add logo and name
         tetrisSettings.getPrimaryStage().getIcons().add(new Image("api/images/LogoTetris.jpg"));
         tetrisSettings.getPrimaryStage().setTitle("Tetris");
-//        tetrisSettings.getPrimaryStage().setResizable(false);
+        tetrisSettings.getPrimaryStage().setResizable(false);
     }
 
 

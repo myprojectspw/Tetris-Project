@@ -35,6 +35,9 @@ public class GamePropertiesWindowButtons {
                     TetrisGame tetris = new TetrisGame(tetrisSettings);
                     Scene scene = new Scene(tetris.Create());
                     tetris.start(scene);
+
+                    tetrisSettings.getPrimaryStage().setHeight(650);
+                    tetrisSettings.getPrimaryStage().setWidth(600);
                     TetrisUtils.ShowScene(tetrisSettings.getPrimaryStage(), scene);
                 }
             }

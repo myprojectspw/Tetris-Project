@@ -45,13 +45,15 @@ public class TetrisUtils {
 
     // Images  =========================================================================================================
     // Utils
-    public static void prepareImage(Pane root, String url, double height, double width) {
+    public static void prepareImage(Pane root, Stage stage, String url, double height, double width) {
         Image image = new Image(url);
         ImageView vi = new ImageView();
         vi.setFitHeight(height);
         vi.setFitWidth(width);
         vi.setImage(image);
         root.getChildren().add(vi);
+        stage.setHeight(height);
+        stage.setWidth(width);
     }
 
     // Radiobutton =====================================================================================================

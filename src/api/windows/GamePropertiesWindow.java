@@ -35,7 +35,7 @@ public class GamePropertiesWindow {
     }
     // Utils
     public static void addGamePropertiesComponents(TetrisSettings tetrisSettings) {
-        tetrisSettings.getFramesAtributes().gamePropertiesWindowImage(tetrisSettings.getRoot());
+        tetrisSettings.getFramesAtributes().gamePropertiesWindowImage(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage());
         tetrisSettings.getFramesAtributes().gamePropertiesWindowPlayerNameLabel(tetrisSettings.getRoot());
         tetrisSettings.getFramesAtributes().gamePropertiesWindowChoseLevel(tetrisSettings.getRoot());
 

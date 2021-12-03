@@ -18,7 +18,7 @@ public class HighScoresWindow {
                 .addAll(tetrisSettings.getHighScoresBoard());
 
         // Add components
-        tetrisSettings.getFramesAtributes().gameHighScoresWindowImage(tetrisSettings.getRoot());
+        tetrisSettings.getFramesAtributes().gameHighScoresWindowImage(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage());
         tetrisSettings.getFramesAtributes().gameHighScoresWindowMainLabel(tetrisSettings.getRoot());
 
         // Add data table

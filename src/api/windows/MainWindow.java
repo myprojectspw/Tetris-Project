@@ -11,7 +11,7 @@ public class MainWindow {
         TetrisUtils.ClearScreenForNewWindow(tetrisSettings.getPrimaryStage(), tetrisSettings.getRoot());
 
         // Add components
-        tetrisSettings.getFramesAtributes().mainWindowImage(tetrisSettings.getRoot());
+        tetrisSettings.getFramesAtributes().mainWindowImage(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage());
         tetrisSettings.getFramesAtributes().mainWindowLabelMain(tetrisSettings.getRoot());
         tetrisSettings.getRoot().getChildren()
                 .addAll(tetrisSettings.getMainBoard());

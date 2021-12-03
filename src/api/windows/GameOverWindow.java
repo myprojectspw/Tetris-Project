@@ -13,7 +13,7 @@ public class GameOverWindow {
                 .addAll(tetrisSettings.getGameOverBoard());
 
         // Add components
-        tetrisSettings.getFramesAtributes().gameOverWindowImage(tetrisSettings.getRoot());
+        tetrisSettings.getFramesAtributes().gameOverWindowImage(tetrisSettings.getRoot(), tetrisSettings.getPrimaryStage());
         tetrisSettings.getFramesAtributes().gameOverWindowLabelMain(tetrisSettings.getRoot());
         tetrisSettings.getFramesAtributes().gameOverWindowLabelScore(tetrisSettings.getRoot());
         tetrisSettings.getFramesAtributes().gameOverWindowLabelScoreValue(tetrisSettings.getRoot(), tetrisSettings.getScore());
